@@ -1,20 +1,48 @@
-package com.example.yocapital.vendedor // Deja el tuyo como estaba
+package com.example.yocapital.vendedor
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.yocapital.R
+import com.google.android.material.textfield.TextInputEditText
+import java.util.Calendar
 
 class VentaVendedorFragment : Fragment() {
 
-    // Esta función es la única importante: es la que dibuja la pantalla
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Aquí le dice: "Infla (dibuja) el diseño de fragment_home_vendedor"
         return inflater.inflate(R.layout.fragment_venta_vendedor, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val inputFecha = view.findViewById<TextInputEditText>(R.id.input_fecha_venta)
+        val calendario = Calendar.getInstance()
+
+        val diaHoy = calendario.get(Calendar.DAY_OF_MONTH)
+        val mesHoy = calendario.get(Calendar.MONTH) + 1
+        val anioHoy = calendario.get(Calendar.YEAR)
+
+        inputFecha.setText("$diaHoy/$mesHoy/$anioHoy")
+
+        inputFecha.setOnClickListener {
+            val dpd = DatePickerDialog(
+                requireContext(),
+                { _, year, month, day ->
+                    val fechaSeleccionada = "$day/${month + 1}/$year"
+                    inputFecha.setText(fechaSeleccionada)
+                },
+                anioHoy,
+                mesHoy - 1,
+                diaHoy
+            )
+            dpd.show()
+        }
     }
 }
