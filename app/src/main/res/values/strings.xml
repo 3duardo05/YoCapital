@@ -10,5 +10,12 @@
 
     <!--    SECCIÓN VENTAS-->
     <string name="vendedor_venta_venta">Agregar Venta</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment1">Hello blank 1111</string>
+    <string name="hello_blank_fragment2">Hello blank 2222</string>
+    <string name="titulo1_onboarding">BIENVENIDO A \n YOCAPITAL</string>
+    <string name="texto_siguiente">Siguiente</string>
+    <string name="titulo_login">Bienvenido</string>
+    <string name="registro_titulo">Crear una Cuenta</string>
 
 </resources>
