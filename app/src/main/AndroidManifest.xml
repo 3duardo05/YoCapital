@@ -13,17 +13,26 @@
         android:theme="@style/Theme.YoCapital"
         tools:targetApi="31">
         <activity
-            android:name=".onboarding.OnBoardingActivity"
-            android:exported="true" >
-        <intent-filter>
+            android:name=".login.login.RegistroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".login.login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".onboarding.OnBoardingActivity"
+            android:exported="false"/>
+        <activity
             android:name=".vendedor.VendedorActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
     </application>
 
 </manifest>
