@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.example.yocapital.R
 import com.google.android.material.textfield.TextInputEditText
 import java.util.Calendar
@@ -22,6 +23,14 @@ class VentaVendedorFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Llamamos a nuestras funciones organizadoras
+        configurarCalendario(view)
+        configurarNavegacion(view)
+    }
+
+// --- MÉTODOS DE LÓGICA SEPARADOS ---
+
+    private fun configurarCalendario(view: View) {
         val inputFecha = view.findViewById<TextInputEditText>(R.id.input_fecha_venta)
         val calendario = Calendar.getInstance()
 
@@ -35,7 +44,7 @@ class VentaVendedorFragment : Fragment() {
             val dpd = DatePickerDialog(
                 requireContext(),
                 { _, year, month, day ->
-                    val fechaSeleccionada = "$day/${month + 1}/$year"
+                    val fechaSeleccionada = String.format("%02d/%02d/%04d", day, month + 1, year)
                     inputFecha.setText(fechaSeleccionada)
                 },
                 anioHoy,
@@ -43,6 +52,19 @@ class VentaVendedorFragment : Fragment() {
                 diaHoy
             )
             dpd.show()
+        }
+    }
+
+    private fun configurarNavegacion(view: View) {
+        val btnAgregar = view.findViewById<TextView>(R.id.btnAnadirCliente)
+
+        btnAgregar.setOnClickListener {
+            val nuevoFragmento = AgregarClienteFragment()
+
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.viewPager, nuevoFragmento)
+                .addToBackStack(null)
+                .commit()
         }
     }
 }

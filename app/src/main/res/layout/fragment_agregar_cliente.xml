@@ -82,7 +82,7 @@
                 android:textSize="10sp" />
 
             <TextView
-                android:id="@+id/btnAnadirCliente"
+                android:id="@+id/btnRegistrarCliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="7dp"
@@ -199,28 +199,28 @@
                 android:layout_height="wrap_content"
                 app:boxStrokeWidth="0dp"
                 app:boxStrokeWidthFocused="0dp"
-            app:endIconMode="custom"
-            app:endIconDrawable="@android:drawable/ic_menu_my_calendar"
-            app:endIconTint="#00D09E"
-            app:hintEnabled="false">
+                app:endIconMode="custom"
+                app:endIconDrawable="@android:drawable/ic_menu_my_calendar"
+                app:endIconTint="#00D09E"
+                app:hintEnabled="false">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_fecha_venta"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@drawable/bg_input"
-                android:backgroundTint="#DFF7E2"
-                android:focusable="false"
-                android:clickable="true"
-                android:cursorVisible="false"
-                android:hint="DD / MM / YYYY"
-                android:inputType="none"
-                android:paddingStart="12dp"
-                android:paddingTop="0dp"
-                android:paddingEnd="50dp"
-                android:paddingBottom="0dp"
-                android:textSize="13sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_fecha_venta"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/bg_input"
+                    android:backgroundTint="#DFF7E2"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:hint="DD / MM / YYYY"
+                    android:inputType="none"
+                    android:paddingStart="12dp"
+                    android:paddingTop="0dp"
+                    android:paddingEnd="50dp"
+                    android:paddingBottom="0dp"
+                    android:textSize="13sp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Space
                 android:layout_width="match_parent"
