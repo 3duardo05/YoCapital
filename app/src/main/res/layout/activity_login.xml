@@ -59,9 +59,9 @@
             android:textColor="#052224"
             android:textSize="10sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/btnSiguiente_a_sigActividad"
-            app:layout_constraintStart_toStartOf="@+id/btnSiguiente_a_sigActividad"
-            app:layout_constraintTop_toBottomOf="@+id/btnSiguiente_a_sigActividad" />
+            app:layout_constraintEnd_toEndOf="@+id/btn_IniciarSesion"
+            app:layout_constraintStart_toStartOf="@+id/btn_IniciarSesion"
+            app:layout_constraintTop_toBottomOf="@+id/btn_IniciarSesion" />
 
         <TextView
             android:id="@+id/textView4"
@@ -126,7 +126,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btnSiguiente_a_sigActividad"
+            android:id="@+id/btn_IniciarSesion"
             android:layout_width="160dp"
             android:layout_height="35dp"
             android:layout_marginTop="80dp"
