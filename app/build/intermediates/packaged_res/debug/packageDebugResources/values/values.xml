@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <string name="agregarCliente_titulo">Agregar Cliente</string>
     <string name="app_name">YoCapital</string>
     <string name="gcm_defaultSenderId" translatable="false">780896542368</string>
     <string name="google_api_key" translatable="false">AIzaSyBIsbhk0m0POPN3s1txJvB5lfJy8gkuxjo</string>

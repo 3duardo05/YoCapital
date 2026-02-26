@@ -19,5 +19,6 @@
     <string name="registro_titulo">Crear una Cuenta</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="agregarCliente_titulo">Agregar Cliente</string>
 
 </resources>
