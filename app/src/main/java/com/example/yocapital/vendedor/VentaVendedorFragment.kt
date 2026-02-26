@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.TextView
@@ -60,7 +61,8 @@ class VentaVendedorFragment : Fragment() {
             val gananciaVendedor = totalVenta * (porcentajeComision / 100)
 
             tvTotalVenta.text = String.format("Total Venta: $%,.2f", totalVenta)
-            tvComisionEstimada.text = String.format("Tu Comisión: $%,.2f", gananciaVendedor)
+            // Usamos .toInt() para que el 5.0 se vea como un 5 limpio, sin decimales extra
+            tvComisionEstimada.text = String.format("Tu Comisión (%d%%): $%,.2f", porcentajeComision.toInt(), gananciaVendedor)
         }
 
         inputCantidad.addTextChangedListener(object : TextWatcher {
@@ -86,11 +88,20 @@ class VentaVendedorFragment : Fragment() {
         configurarNavegacion(view)
         configurarSpinners(view)
         configurarCalculadoraEnTiempoReal(view)
+        configurarBotonGuardarVenta(view)
     }
 
     private fun configurarSpinners(view: View) {
         val spinnerCliente = view.findViewById<Spinner>(R.id.spinner_cliente)
         val spinnerProducto = view.findViewById<Spinner>(R.id.spinner_producto)
+
+        listaNombresProductos.clear()
+        listaPrecios.clear()
+        listaComisiones.clear()
+
+        listaNombresProductos.add("Selecciona un producto...")
+        listaPrecios.add(0.0)
+        listaComisiones.add(0.0)
 
         val listaClientes = mutableListOf("Selecciona un cliente...")
 
@@ -102,7 +113,7 @@ class VentaVendedorFragment : Fragment() {
         adapterProductos.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerProducto.adapter = adapterProductos
 
-        db.collection("usuarios").get().addOnSuccessListener { documentos ->
+        db.collection("clientes").get().addOnSuccessListener { documentos ->
             for (documento in documentos) {
                 val nombre = documento.getString("nombre")
                 if (nombre != null) listaClientes.add(nombre)
@@ -157,13 +168,64 @@ class VentaVendedorFragment : Fragment() {
         btnAgregarCliente.setOnClickListener {
             val fragmentoCliente = AgregarClienteFragment()
 
-            // Le pedimos permiso a la Activity padre (VendedorActivity) para usar su hueco
             requireActivity().supportFragmentManager.beginTransaction()
-                // Animación opcional para que se note que cambiaste de pantalla y no que se "reinició"
                 .setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out)
                 .replace(R.id.fragmentContainer, fragmentoCliente)
-                .addToBackStack(null) // Guarda la pantalla anterior para poder regresar con la flecha
+                .addToBackStack(null)
                 .commit()
+        }
+    }
+
+    private fun configurarBotonGuardarVenta(view: View) {
+        val btnGuardar = view.findViewById<Button>(R.id.btn_AnadirVenta)
+
+        val spinnerCliente = view.findViewById<Spinner>(R.id.spinner_cliente)
+        val spinnerProducto = view.findViewById<Spinner>(R.id.spinner_producto)
+        val inputCantidad = view.findViewById<EditText>(R.id.input_cantidad)
+        val inputFecha = view.findViewById<TextInputEditText>(R.id.input_fecha_venta)
+
+        btnGuardar.setOnClickListener {
+            val posicionCliente = spinnerCliente.selectedItemPosition
+            val posicionProducto = spinnerProducto.selectedItemPosition
+            val textoCantidad = inputCantidad.text.toString()
+
+            if (posicionCliente == 0 || posicionProducto == 0 || textoCantidad.isEmpty()) {
+                Toast.makeText(requireContext(), "Por favor llena todos los campos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val clienteElegido = spinnerCliente.selectedItem.toString()
+            val productoElegido = spinnerProducto.selectedItem.toString()
+            val cantidad = textoCantidad.toInt()
+            val fecha = inputFecha.text.toString()
+
+            val precio = listaPrecios[posicionProducto]
+            val porcentajeComision = listaComisiones[posicionProducto]
+
+            val totalVenta = precio * cantidad
+            val gananciaVendedor = totalVenta * (porcentajeComision / 100)
+
+            val nuevaVenta = hashMapOf(
+                "cliente" to clienteElegido,
+                "producto" to productoElegido,
+                "cantidad" to cantidad,
+                "fecha" to fecha,
+                "total_venta" to totalVenta,
+                "comision_vendedor" to gananciaVendedor
+            )
+
+            db.collection("ventas")
+                .add(nuevaVenta)
+                .addOnSuccessListener {
+                    Toast.makeText(requireContext(), "¡Venta registrada exitosamente!", Toast.LENGTH_LONG).show()
+
+                    spinnerCliente.setSelection(0)
+                    spinnerProducto.setSelection(0)
+                    inputCantidad.setText("")
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(requireContext(), "Error al guardar: ${e.message}", Toast.LENGTH_LONG).show()
+                }
         }
     }
 }
