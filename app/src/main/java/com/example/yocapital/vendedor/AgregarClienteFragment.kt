@@ -17,7 +17,7 @@ class AgregarClienteFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_venta_vendedor, container, false)
+        return inflater.inflate(R.layout.fragment_agregar_cliente, container, false)
     }
 
 
