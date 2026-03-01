@@ -24,10 +24,6 @@
         "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\mipmap-anydpi\\ic_launcher.xml"
     },
     {
-        "merged": "com.example.yocapital.app-debug-49:/layout_fragment_agregar_cliente.xml.flat",
-        "source": "com.example.yocapital.app-main-51:/layout/fragment_agregar_cliente.xml"
-    },
-    {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\mipmap-xhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\mipmap-xhdpi\\ic_launcher.webp"
     },
@@ -154,6 +150,10 @@
     {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.yocapital.app-debug-49:/layout_activity_login.xml.flat",
+        "source": "com.example.yocapital.app-main-51:/layout/activity_login.xml"
     },
     {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\mipmap-hdpi_ic_launcher.webp.flat",

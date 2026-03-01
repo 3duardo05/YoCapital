@@ -61,7 +61,6 @@ class VentaVendedorFragment : Fragment() {
             val gananciaVendedor = totalVenta * (porcentajeComision / 100)
 
             tvTotalVenta.text = String.format("Total Venta: $%,.2f", totalVenta)
-            // Usamos .toInt() para que el 5.0 se vea como un 5 limpio, sin decimales extra
             tvComisionEstimada.text = String.format("Tu Comisión (%d%%): $%,.2f", porcentajeComision.toInt(), gananciaVendedor)
         }
 
@@ -206,6 +205,7 @@ class VentaVendedorFragment : Fragment() {
             val gananciaVendedor = totalVenta * (porcentajeComision / 100)
 
             val nuevaVenta = hashMapOf(
+                "vendedor_id" to "VENDEDOR_PRUEBA_123",
                 "cliente" to clienteElegido,
                 "producto" to productoElegido,
                 "cantidad" to cantidad,

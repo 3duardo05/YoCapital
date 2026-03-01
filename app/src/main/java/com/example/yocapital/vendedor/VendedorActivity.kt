@@ -1,4 +1,4 @@
-package com.example.yocapital.vendedor // OJO: Deja el tuyo como esté
+package com.example.yocapital.vendedor
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

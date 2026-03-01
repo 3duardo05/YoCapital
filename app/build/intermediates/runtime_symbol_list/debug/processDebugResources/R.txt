@@ -4253,6 +4253,8 @@ int id toggle 0x7f080216
 int id top 0x7f080217
 int id topPanel 0x7f080218
 int id top_center 0x7f080219
+int id total_comisiones 0x7f08024a
+int id total_ventas 0x7f08024b
 int id touch_outside 0x7f08021a
 int id transitionToEnd 0x7f08021b
 int id transitionToStart 0x7f08021c

@@ -4254,6 +4254,8 @@ id toggle
 id top
 id topPanel
 id top_center
+id total_comisiones
+id total_ventas
 id touch_outside
 id transitionToEnd
 id transitionToStart
