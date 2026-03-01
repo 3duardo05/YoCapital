@@ -60,7 +60,7 @@
                 android:layout_height="30dp"
                 android:background="@drawable/bg_input"
                 android:backgroundTint="#DFF7E2"
-                android:hint="Tu nombre aquí"
+                android:hint="Ingresa tu Nombre"
                 android:inputType="textPersonName"
                 android:paddingStart="15dp"
                 android:textSize="13sp" />
@@ -87,7 +87,7 @@
                 android:layout_height="30dp"
                 android:background="@drawable/bg_input"
                 android:backgroundTint="#DFF7E2"
-                android:hint="Venta de Autos"
+                android:hint="Nombre de la "
                 android:inputType="text"
                 android:paddingStart="15dp"
                 android:textSize="13sp" />
