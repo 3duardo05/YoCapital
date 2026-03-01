@@ -1,4 +1,4 @@
-package com.example.yocapital.vendedor // Deja el tuyo como estaba
+package com.example.yocapital.vendedor
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

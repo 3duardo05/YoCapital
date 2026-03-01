@@ -13,7 +13,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class AgregarClienteFragment : Fragment() {
 
-    // 1. Preparamos la conexión a Firebase
     private val db = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
@@ -32,34 +31,28 @@ class AgregarClienteFragment : Fragment() {
         val btnGuardar = view.findViewById<Button>(R.id.btn_guardar_cliente)
 
         btnGuardar.setOnClickListener {
-            // Extraemos el texto que escribió el usuario
             val nombre = inputNombre.text.toString().trim()
             val telefono = inputTelefono.text.toString().trim()
             val correo = inputCorreo.text.toString().trim()
 
-            // Validación básica: Que al menos ponga el nombre
             if (nombre.isEmpty()) {
                 inputNombre.error = "El nombre es obligatorio"
                 return@setOnClickListener
             }
 
-            // 2. Empaquetamos los datos exactamente con los nombres de campos que usamos antes
             val nuevoCliente = hashMapOf(
                 "nombre" to nombre,
                 "telefono" to telefono,
                 "correo" to correo
             )
 
-            // 3. Subimos el paquete a la colección "clientes"
             db.collection("clientes")
                 .add(nuevoCliente)
                 .addOnSuccessListener {
-                    // Si sale bien: Mostramos mensaje y regresamos a la pantalla anterior
                     Toast.makeText(requireContext(), "Cliente guardado con éxito", Toast.LENGTH_SHORT).show()
-                    parentFragmentManager.popBackStack() // Esto es como presionar la flecha de "Atrás"
+                    parentFragmentManager.popBackStack()
                 }
                 .addOnFailureListener { e ->
-                    // Si falla por falta de internet o algo: Mostramos el error
                     Toast.makeText(requireContext(), "Error al guardar: ${e.message}", Toast.LENGTH_LONG).show()
                 }
         }
