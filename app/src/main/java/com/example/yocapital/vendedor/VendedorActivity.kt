@@ -9,32 +9,38 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class VendedorActivity : AppCompatActivity() {
 
+    private var fragmentoActual: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_vendedor)
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNav)
 
         bottomNav.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.menu_inicio -> {
-                    cambiarFragmento(HomeVendedorFragment())
-                    true
+            val nuevoFragmento = when (item.itemId) {
+                R.id.menu_inicio -> "home"
+                R.id.menu_agregar -> "agregar"
+                R.id.menu_perfil -> "perfil"
+                else -> null
+            }
+
+            if (nuevoFragmento != null && nuevoFragmento != fragmentoActual) {
+                fragmentoActual = nuevoFragmento
+
+                when (item.itemId) {
+                    R.id.menu_inicio -> cambiarFragmento(HomeVendedorFragment())
+                    R.id.menu_agregar -> cambiarFragmento(VentaVendedorFragment())
+                    R.id.menu_perfil -> cambiarFragmento(PerfilVendedorFragment())
                 }
-                R.id.menu_agregar -> {
-                    cambiarFragmento(VentaVendedorFragment())
-                    true
-                }
-                R.id.menu_perfil -> {
-                    cambiarFragmento(PerfilVendedorFragment())
-                    true
-                }
-                else -> false
+                true
+            } else {
+                false
             }
         }
 
         if (savedInstanceState == null) {
+            fragmentoActual = "home"
             cambiarFragmento(HomeVendedorFragment())
             bottomNav.selectedItemId = R.id.menu_inicio
         }

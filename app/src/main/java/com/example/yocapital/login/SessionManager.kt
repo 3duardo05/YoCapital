@@ -10,19 +10,21 @@ object SessionManager {
     private const val KEY_NOMBRE = "nombre"
     private const val KEY_ROL = "rol"
     private const val KEY_CORREO = "correo"
+    private const val KEY_TELEFONO = "telefono"
     private const val KEY_ONBOARDING = "vioOnboarding"
 
     private fun getPrefs(context: Context): SharedPreferences {
         return context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
     }
 
-    fun saveSession(context: Context, id: String, nombre: String, correo: String, rol: String) {
+    fun saveSession(context: Context, id: String, nombre: String, correo: String, rol: String, telefono: String = "") {
         val editor = getPrefs(context).edit()
         editor.putBoolean(IS_LOGGED_IN, true)
         editor.putString(KEY_USER_ID, id)
         editor.putString(KEY_NOMBRE, nombre)
         editor.putString(KEY_CORREO, correo)
         editor.putString(KEY_ROL, rol)
+        editor.putString(KEY_TELEFONO, telefono)
         editor.apply()
     }
 
@@ -37,6 +39,8 @@ object SessionManager {
     fun isLogueado(context: Context): Boolean = getPrefs(context).getBoolean(IS_LOGGED_IN, false)
     fun getRol(context: Context): String = getPrefs(context).getString(KEY_ROL, "") ?: ""
     fun getNombre(context: Context): String = getPrefs(context).getString(KEY_NOMBRE, "") ?: ""
+    fun getCorreo(context: Context): String = getPrefs(context).getString(KEY_CORREO, "") ?: ""
+    fun getTelefono(context: Context): String = getPrefs(context).getString(KEY_TELEFONO, "") ?: ""
     fun veteAOnboarding(context: Context): Boolean = !getPrefs(context).getBoolean(KEY_ONBOARDING, false)
     fun getUserId(context: Context): String = getPrefs(context).getString(KEY_USER_ID, "") ?: ""
 }
