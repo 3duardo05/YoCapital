@@ -4,10 +4,6 @@
         "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\drawable\\on_boarding_monedas.png"
     },
     {
-        "merged": "com.example.yocapital.app-debug-49:/layout_item_venta.xml.flat",
-        "source": "com.example.yocapital.app-main-51:/layout/item_venta.xml"
-    },
-    {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\drawable_user_icon_24.xml.flat",
         "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\drawable\\user_icon_24.xml"
     },
@@ -24,12 +20,12 @@
         "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\layout_fragment_on_boarding1.xml.flat",
-        "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\layout\\fragment_on_boarding1.xml"
-    },
-    {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\mipmap-anydpi_ic_launcher.xml.flat",
         "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\mipmap-anydpi\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\layout_fragment_on_boarding1.xml.flat",
+        "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\layout\\fragment_on_boarding1.xml"
     },
     {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\mipmap-xhdpi_ic_launcher.webp.flat",
@@ -38,6 +34,10 @@
     {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\drawable_bg_fondo_circulo.xml.flat",
         "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\drawable\\bg_fondo_circulo.xml"
+    },
+    {
+        "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\layout-land_fragment_home_vendedor.xml.flat",
+        "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\layout-land\\fragment_home_vendedor.xml"
     },
     {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\layout_activity_login.xml.flat",
@@ -54,6 +54,10 @@
     {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\drawable_on_boarding_celular.png.flat",
         "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\drawable\\on_boarding_celular.png"
+    },
+    {
+        "merged": "com.example.yocapital.app-debug-49:/layout_fragment_perfil_vendedor.xml.flat",
+        "source": "com.example.yocapital.app-main-51:/layout/fragment_perfil_vendedor.xml"
     },
     {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\layout_activity_on_boarding.xml.flat",

@@ -3827,6 +3827,8 @@ id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
 id btnAnadirCliente
+id btnCambiarPassword
+id btnCerrarSesion
 id btnIniciarSesion
 id btnRegistrarse
 id btnSiguiente_a_fragmento2
@@ -3951,6 +3953,7 @@ id group_divider
 id grouping
 id groups
 id guideline
+id guideline11
 id guideline2
 id guideline3
 id guideline4
@@ -3974,6 +3977,7 @@ id ignore
 id ignoreRequest
 id image
 id imageView
+id imgFotoPerfil
 id imgIconoVenta
 id immediateStop
 id included
@@ -4278,12 +4282,22 @@ id transition_transform
 id triangle
 id tv_comision_estimada
 id tv_total_venta
+id txtCantidadVentas
 id txtCliente
 id txtCliente2
+id txtClienteFrecuente
+id txtCorreoVendedor
 id txtMesAnio
 id txtMontoComision
 id txtNombreProducto
+id txtNombreVendedor
+id txtRolVendedor
 id txtSaludo
+id txtTelefonoVendedor
+id txtTituloPerfil
+id txtTotalComisionesHistorico
+id txtTotalVentasHistorico
+id txtVentasClienteFrecuente
 id unchecked
 id uniform
 id unlabeled
