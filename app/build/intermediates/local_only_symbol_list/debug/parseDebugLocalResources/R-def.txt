@@ -19,6 +19,8 @@ drawable on_boarding_monedas
 drawable user_icon_24
 id bottomNav
 id btnAnadirCliente
+id btnCambiarPassword
+id btnCerrarSesion
 id btnIniciarSesion
 id btnRegistrarse
 id btnSiguiente_a_fragmento2
@@ -31,6 +33,7 @@ id circulo2
 id fragmentContainer
 id frameLayout
 id guideline
+id guideline11
 id guideline2
 id guideline3
 id guideline4
@@ -38,6 +41,7 @@ id guideline5
 id guideline7
 id iconoVentas
 id imageView
+id imgFotoPerfil
 id imgIconoVenta
 id input_cantidad
 id input_confirm_pass
@@ -75,12 +79,22 @@ id total_comisiones
 id total_ventas
 id tv_comision_estimada
 id tv_total_venta
+id txtCantidadVentas
 id txtCliente
 id txtCliente2
+id txtClienteFrecuente
+id txtCorreoVendedor
 id txtMesAnio
 id txtMontoComision
 id txtNombreProducto
+id txtNombreVendedor
+id txtRolVendedor
 id txtSaludo
+id txtTelefonoVendedor
+id txtTituloPerfil
+id txtTotalComisionesHistorico
+id txtTotalVentasHistorico
+id txtVentasClienteFrecuente
 id viewPager
 id zonaBlanca
 layout activity_gerente
