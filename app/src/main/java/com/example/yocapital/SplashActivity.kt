@@ -5,10 +5,16 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.yocapital.login.SessionManager
 import com.example.yocapital.login.login.LoginActivity
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+        val settings = com.google.firebase.firestore.firestoreSettings {
+            isPersistenceEnabled = true // Activa la base de datos local
+        }
+        FirebaseFirestore.getInstance().firestoreSettings = settings
 
         val intentDeDestino = when {
             SessionManager.veteAOnboarding(this) -> {

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.yocapital.R
+import com.example.yocapital.vendedor.home.HomeVendedorFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class VendedorActivity : AppCompatActivity() {

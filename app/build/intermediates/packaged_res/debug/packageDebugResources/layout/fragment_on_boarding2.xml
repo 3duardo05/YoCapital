@@ -8,13 +8,14 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="254dp"
-        android:layout_height="65dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:gravity="center"
         android:text="¿Listo para \nPotenciar tus Ventas?"
         android:textColor="#052224"
-        android:textSize="25dp"
+        android:textSize="32sp"
+        android:fontFamily="sans-serif-black"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,11 +26,11 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="306dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Visualiza tus resultados, lleva el control exacto de tus comisiones y alcanza tus metas finacieras mes a mes."
         android:textColor="#052224"
-        android:textSize="12.5sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="@+id/textView2"
@@ -79,13 +80,13 @@
             android:layout_height="wrap_content"
             android:text="@string/texto_siguiente"
             android:textColor="#0E3E3E"
-            android:textSize="18sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="0.25" />
+            app:layout_constraintVertical_bias="0.241" />
 
         <ImageView
             android:id="@+id/circulo1"
