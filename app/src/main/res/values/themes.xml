@@ -5,7 +5,6 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.YoCapital" parent="Base.Theme.YoCapital" />
 
     <style name="EstiloIndicador" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
         <item name="android:width">60dp</item>
@@ -18,5 +17,31 @@
     <style name="FormaCuadradoSuave">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">20dp</item>
+    </style>
+
+<!--    <style name="Theme.YoCapital" parent="Theme.Material3.DayNight.NoActionBar">-->
+
+
+<!--        <item name="colorOnSurfaceVariant">#000</item>-->
+
+<!--        <item name="colorSecondaryContainer">#00D09E</item>-->
+<!--        <item name="colorOnSecondaryContainer">#ddd</item>-->
+
+<!--        <item name="android:navigationBarColor">#0F0F0F</item>-->
+<!--    </style>-->
+
+    <style name="Theme.YoCapital" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:textColorHint">#888</item>
+        <item name="colorOnSurface">#888</item>
+
+        <item name="colorControlActivated">#00D09E</item>
+
+        <item name="colorPrimary">#00D09E</item>
+        <item name="colorSurfaceVariant">#222</item>
+        <item name="android:navigationBarColor">#222</item>
+
+        <item name="colorSecondaryContainer">#e4a</item>
+        <item name="colorOnSecondaryContainer">#ddd</item>
+        <item name="colorOnSurfaceVariant">#000</item>
     </style>
 </resources>

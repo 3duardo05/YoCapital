@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00D09E"
-    tools:context=".vendedor.HomeVendedorFragment">
+    tools:context=".vendedor.home.HomeVendedorFragment">
 
 
     <TextView
         android:id="@+id/txtSaludo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="@string/vendedor_venta_venta"
         android:textColor="#052224"
         android:textSize="22sp"
@@ -52,7 +53,7 @@
             android:paddingVertical="0dp"
             android:text="Guardar"
             android:textColor="#052224"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +64,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="14dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -79,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:text="Nuevo Cliente?"
                 android:textColor="#093030"
-                android:textSize="10sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/btnAnadirCliente"
@@ -88,7 +89,7 @@
                 android:layout_marginLeft="7dp"
                 android:text="Registrar Cliente"
                 android:textColor="#3299FF"
-                android:textSize="10sp" />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -106,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:text="Cliente"
                 android:textColor="#0E3E3E"
-                android:textSize="13sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Space
@@ -118,6 +119,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/bg_input"
+                android:spinnerMode="dialog"
                 android:backgroundTint="#DFF7E2"
                 android:paddingStart="15dp" />
 
@@ -130,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:text="Producto"
                 android:textColor="#0E3E3E"
-                android:textSize="13sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Space
@@ -142,6 +144,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/bg_input"
+                android:textColor="#333"
+                android:textColorHint="#888"
+                android:spinnerMode="dialog"
                 android:backgroundTint="#DFF7E2"
                 android:paddingStart="15dp" />
 
@@ -154,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:text="Cantidad"
                 android:textColor="#0E3E3E"
-                android:textSize="13sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Space
@@ -167,10 +172,13 @@
                 android:layout_height="40dp"
                 android:background="@drawable/bg_input"
                 android:backgroundTint="#DFF7E2"
+                android:textColor="#333"
+                android:textColorHint="#888"
+                android:text="1"
                 android:hint="Ej. 1"
                 android:inputType="number"
                 android:paddingStart="15dp"
-                android:textSize="13sp" />
+                android:textSize="16sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -181,7 +189,7 @@
                 android:layout_height="wrap_content"
                 android:text="Fecha"
                 android:textColor="#0E3E3E"
-                android:textSize="13sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Space
@@ -205,6 +213,8 @@
                     android:background="@drawable/bg_input"
                     android:backgroundTint="#DFF7E2"
                     android:focusable="false"
+                    android:textColor="#333"
+                    android:textColorHint="#888"
                     android:clickable="true"
                     android:cursorVisible="false"
                     android:hint="DD / MM / YYYY"
@@ -213,7 +223,7 @@
                     android:paddingTop="0dp"
                     android:paddingEnd="50dp"
                     android:paddingBottom="0dp"
-                    android:textSize="13sp" />
+                    android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Space
@@ -230,7 +240,7 @@
                 android:layout_height="wrap_content"
                 android:text="Total Venta: $0.00"
                 android:textColor="#0E3E3E"
-                android:textSize="14sp" />
+                android:textSize="17sp" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -242,7 +252,7 @@
                     android:layout_height="wrap_content"
                     android:text="Tu Comisión: $0.00"
                     android:textColor="#00D09E"
-                    android:textSize="16sp"
+                    android:textSize="19sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -253,7 +263,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1" />
+            app:layout_constraintGuide_percent="0.08" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

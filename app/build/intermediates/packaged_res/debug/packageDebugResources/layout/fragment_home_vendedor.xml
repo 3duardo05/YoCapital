@@ -5,16 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00D09E"
-    tools:context=".vendedor.HomeVendedorFragment">
+    tools:context=".vendedor.home.HomeVendedorFragment">
 
 
     <TextView
         android:id="@+id/txtSaludo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="@string/vendedor_home_nombre"
-        android:textColor="#052224"
-        android:textSize="22sp"
+        android:textColor="#000"
+        android:textSize="25sp"
+        android:fontFamily="sans-serif-black"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="@+id/linearLayout"
@@ -32,16 +34,22 @@
         app:layout_constraintTop_toTopOf="@+id/guideline3"
         app:layout_constraintVertical_bias="1.0">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="aqui va el contenido"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvVentasRecientes"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="80dp"
+            android:clipToPadding="false"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.409" />
+            tools:listitem="@layout/item_venta" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -110,7 +118,7 @@
                 android:text="@string/vendedor_home_ventas_totales"
                 android:textAlignment="center"
                 android:textColor="#052224"
-                android:textSize="10sp"
+                android:textSize="14sp"
                 android:textStyle="normal" />
         </LinearLayout>
 

@@ -17,6 +17,7 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import com.example.yocapital.R
+import com.example.yocapital.login.SessionManager
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Calendar
@@ -35,6 +36,75 @@ class VentaVendedorFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_venta_vendedor, container, false)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        configurarCalendario(view)
+        configurarNavegacion(view)
+        configurarSpinners(view) // Aquí es donde aplicamos el cambio
+        configurarCalculadoraEnTiempoReal(view)
+        configurarBotonGuardarVenta(view)
+    }
+
+    private fun configurarSpinners(view: View) {
+        val spinnerCliente = view.findViewById<Spinner>(R.id.spinner_cliente)
+        val spinnerProducto = view.findViewById<Spinner>(R.id.spinner_producto)
+
+        listaNombresProductos.clear()
+        listaPrecios.clear()
+        listaComisiones.clear()
+
+        listaNombresProductos.add("Selecciona un producto...")
+        listaPrecios.add(0.0)
+        listaComisiones.add(0.0)
+
+        val listaClientes = mutableListOf("Selecciona un cliente...")
+
+        // --- CAMBIO AQUÍ: Usamos tu layout 'spinner_personalizado' ---
+        val adapterClientes = ArrayAdapter(
+            requireContext(),
+            R.layout.spinner_personalizado, // El archivo que creaste
+            listaClientes
+        )
+        adapterClientes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerCliente.adapter = adapterClientes
+
+        val adapterProductos = ArrayAdapter(
+            requireContext(),
+            R.layout.spinner_personalizado, // El archivo que creaste
+            listaNombresProductos
+        )
+        adapterProductos.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spinnerProducto.adapter = adapterProductos
+        // -----------------------------------------------------------
+
+        db.collection("clientes").get().addOnSuccessListener { documentos ->
+            for (documento in documentos) {
+                val nombre = documento.getString("nombre")
+                if (nombre != null) listaClientes.add(nombre)
+            }
+            adapterClientes.notifyDataSetChanged()
+        }
+
+        db.collection("productos").get().addOnSuccessListener { documentos ->
+            for (documento in documentos) {
+                val nombre = documento.getString("producto")
+                val precio = documento.getDouble("monto_base") ?: 0.0
+                val comision = documento.getDouble("comision") ?: 0.0
+
+                if (nombre != null) {
+                    listaNombresProductos.add(nombre)
+                    listaPrecios.add(precio)
+                    listaComisiones.add(comision)
+                }
+            }
+            adapterProductos.notifyDataSetChanged()
+        }
+    }
+
+    // ... (El resto de tus funciones: configurarCalculadoraEnTiempoReal, configurarCalendario,
+    // configurarNavegacion y configurarBotonGuardarVenta se mantienen igual que en tu código)
 
     private fun configurarCalculadoraEnTiempoReal(view: View) {
         val inputCantidad = view.findViewById<EditText>(R.id.input_cantidad)
@@ -80,62 +150,6 @@ class VentaVendedorFragment : Fragment() {
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        configurarCalendario(view)
-        configurarNavegacion(view)
-        configurarSpinners(view)
-        configurarCalculadoraEnTiempoReal(view)
-        configurarBotonGuardarVenta(view)
-    }
-
-    private fun configurarSpinners(view: View) {
-        val spinnerCliente = view.findViewById<Spinner>(R.id.spinner_cliente)
-        val spinnerProducto = view.findViewById<Spinner>(R.id.spinner_producto)
-
-        listaNombresProductos.clear()
-        listaPrecios.clear()
-        listaComisiones.clear()
-
-        listaNombresProductos.add("Selecciona un producto...")
-        listaPrecios.add(0.0)
-        listaComisiones.add(0.0)
-
-        val listaClientes = mutableListOf("Selecciona un cliente...")
-
-        val adapterClientes = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, listaClientes)
-        adapterClientes.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerCliente.adapter = adapterClientes
-
-        val adapterProductos = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, listaNombresProductos)
-        adapterProductos.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerProducto.adapter = adapterProductos
-
-        db.collection("clientes").get().addOnSuccessListener { documentos ->
-            for (documento in documentos) {
-                val nombre = documento.getString("nombre")
-                if (nombre != null) listaClientes.add(nombre)
-            }
-            adapterClientes.notifyDataSetChanged()
-        }
-
-        db.collection("productos").get().addOnSuccessListener { documentos ->
-            for (documento in documentos) {
-                val nombre = documento.getString("producto")
-                val precio = documento.getDouble("monto_base") ?: 0.0
-                val comision = documento.getDouble("comision") ?: 0.0
-
-                if (nombre != null) {
-                    listaNombresProductos.add(nombre)
-                    listaPrecios.add(precio)
-                    listaComisiones.add(comision)
-                }
-            }
-            adapterProductos.notifyDataSetChanged()
-        }
-    }
-
     private fun configurarCalendario(view: View) {
         val inputFecha = view.findViewById<TextInputEditText>(R.id.input_fecha_venta)
         val calendario = Calendar.getInstance()
@@ -144,7 +158,8 @@ class VentaVendedorFragment : Fragment() {
         val mesHoy = calendario.get(Calendar.MONTH) + 1
         val anioHoy = calendario.get(Calendar.YEAR)
 
-        inputFecha.setText("$diaHoy/$mesHoy/$anioHoy")
+        val fechaHoyFormateada = String.format("%02d/%02d/%04d", diaHoy, mesHoy, anioHoy)
+        inputFecha.setText(fechaHoyFormateada)
 
         inputFecha.setOnClickListener {
             val dpd = DatePickerDialog(
@@ -205,7 +220,7 @@ class VentaVendedorFragment : Fragment() {
             val gananciaVendedor = totalVenta * (porcentajeComision / 100)
 
             val nuevaVenta = hashMapOf(
-                "vendedor_id" to "VENDEDOR_PRUEBA_123",
+                "vendedor_id" to SessionManager.getUserId(requireContext()),
                 "cliente" to clienteElegido,
                 "producto" to productoElegido,
                 "cantidad" to cantidad,

@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#00D09E"
-    tools:context=".vendedor.HomeVendedorFragment">
+    tools:context=".vendedor.home.HomeVendedorFragment">
 
 
     <TextView
         android:id="@+id/txtSaludo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
         android:text="@string/agregarCliente_titulo"
         android:textColor="#052224"
         android:textSize="22sp"
@@ -52,7 +53,7 @@
             android:paddingVertical="0dp"
             android:text="Guardar"
             android:textColor="#052224"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +76,7 @@
                 android:layout_height="wrap_content"
                 android:text="Nombre Completo o Empresa"
                 android:textColor="#0E3E3E"
-                android:textSize="13sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
             <Space
@@ -91,7 +92,9 @@
                 android:hint="Ej. Nombre o Empresa"
                 android:inputType="textPersonName"
                 android:paddingStart="15dp"
-                android:textSize="13sp" />
+                android:textColor="#333"
+                android:textColorHint="#888"
+                android:textSize="16sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -102,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:text="Teléfono"
                 android:textColor="#0E3E3E"
-                android:textSize="13sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Space
@@ -117,8 +120,10 @@
                 android:backgroundTint="#DFF7E2"
                 android:hint="Ej. 5512345678"
                 android:inputType="phone"
+                android:textColor="#333"
+                android:textColorHint="#888"
                 android:paddingStart="15dp"
-                android:textSize="13sp" />
+                android:textSize="16sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -129,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:text="Correo Electrónico"
                 android:textColor="#0E3E3E"
-                android:textSize="13sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Space
@@ -144,8 +149,10 @@
                 android:backgroundTint="#DFF7E2"
                 android:hint="correo@ejemplo.com"
                 android:inputType="textEmailAddress"
+                android:textColor="#333"
+                android:textColorHint="#888"
                 android:paddingStart="15dp"
-                android:textSize="13sp" />
+                android:textSize="16sp" />
 
             <Space
                 android:layout_width="match_parent"

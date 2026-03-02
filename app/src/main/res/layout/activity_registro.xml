@@ -12,13 +12,13 @@
         android:gravity="center"
         android:text="@string/registro_titulo"
         android:textColor="#052224"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+        app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.489" />
+        app:layout_constraintTop_toTopOf="@+id/guideline7"
+        app:layout_constraintVertical_bias="0.534" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout"
@@ -30,8 +30,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -47,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:text="Nombre Completo"
                 android:textColor="#0E3E3E"
-                android:textSize="13sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Space
@@ -63,7 +62,9 @@
                 android:hint="Ingresa tu Nombre"
                 android:inputType="textPersonName"
                 android:paddingStart="15dp"
-                android:textSize="13sp" />
+                android:textColor="#333"
+                android:textColorHint="#888"
+                android:textSize="16sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -74,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:text="Nombre de la Empresa"
                 android:textColor="#0E3E3E"
-                android:textSize="13sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Space
@@ -87,10 +88,12 @@
                 android:layout_height="30dp"
                 android:background="@drawable/bg_input"
                 android:backgroundTint="#DFF7E2"
-                android:hint="Nombre de la "
+                android:hint="Nombre de la Empresa"
                 android:inputType="text"
                 android:paddingStart="15dp"
-                android:textSize="13sp" />
+                android:textColor="#333"
+                android:textColorHint="#888"
+                android:textSize="16sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -101,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:text="Correo Electrónico"
                 android:textColor="#0E3E3E"
-                android:textSize="13sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Space
@@ -117,7 +120,9 @@
                 android:hint="correo@ejemplo.com"
                 android:inputType="textEmailAddress"
                 android:paddingStart="15dp"
-                android:textSize="13sp" />
+                android:textColor="#333"
+                android:textColorHint="#888"
+                android:textSize="16sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -128,7 +133,7 @@
                 android:layout_height="wrap_content"
                 android:text="Teléfono"
                 android:textColor="#0E3E3E"
-                android:textSize="13sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Space
@@ -143,8 +148,10 @@
                 android:backgroundTint="#DFF7E2"
                 android:hint="55 55555 555"
                 android:inputType="phone"
+                android:textColor="#333"
+                android:textColorHint="#888"
                 android:paddingStart="15dp"
-                android:textSize="13sp" />
+                android:textSize="16sp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -155,7 +162,7 @@
                 android:layout_height="wrap_content"
                 android:text="Contraseña"
                 android:textColor="#0E3E3E"
-                android:textSize="13sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Space
@@ -179,11 +186,13 @@
                     android:backgroundTint="#DFF7E2"
                     android:hint="● ● ● ● ● ● ● ●"
                     android:inputType="textPassword"
+                    android:textColor="#333"
+                    android:textColorHint="#888"
                     android:paddingStart="12dp"
                     android:paddingTop="0dp"
                     android:paddingEnd="50dp"
                     android:paddingBottom="0dp"
-                    android:textSize="13sp" />
+                    android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Space
@@ -195,7 +204,7 @@
                 android:layout_height="wrap_content"
                 android:text="Confirmar Contraseña"
                 android:textColor="#0E3E3E"
-                android:textSize="13sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <Space
@@ -218,16 +227,17 @@
                     android:background="@drawable/bg_input"
                     android:backgroundTint="#DFF7E2"
                     android:hint="● ● ● ● ● ● ● ●"
+                    android:textColor="#333"
+                    android:textColorHint="#888"
                     android:inputType="textPassword"
                     android:paddingStart="12dp"
                     android:paddingTop="0dp"
                     android:paddingEnd="50dp"
                     android:paddingBottom="0dp"
-                    android:textSize="13sp" />
+                    android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
-
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline5"
@@ -235,7 +245,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.07" />
-
 
         <Button
             android:id="@+id/btnSiguiente_a_sigActividad"
@@ -247,7 +256,7 @@
             android:paddingVertical="0dp"
             android:text="Registrarse"
             android:textColor="#052224"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -273,7 +282,7 @@
                 android:layout_height="wrap_content"
                 android:text="Ya tienes una Cuenta?"
                 android:textColor="#093030"
-                android:textSize="10sp" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/btnIniciarSesion"
@@ -282,7 +291,7 @@
                 android:layout_marginLeft="7dp"
                 android:text="Iniciar Sesión"
                 android:textColor="#3299FF"
-                android:textSize="10sp" />
+                android:textSize="15sp" />
 
         </LinearLayout>
 
@@ -293,6 +302,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.12" />
+        app:layout_constraintGuide_percent="0.15" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
