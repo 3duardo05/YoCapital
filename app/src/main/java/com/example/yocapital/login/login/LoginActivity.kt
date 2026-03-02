@@ -12,6 +12,7 @@ import com.example.yocapital.login.SessionManager
 import com.google.firebase.Firebase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.firestore
+import java.security.MessageDigest
 
 class LoginActivity : AppCompatActivity() {
 
@@ -39,6 +40,8 @@ class LoginActivity : AppCompatActivity() {
 
             if (correoIngresado.isNotEmpty() && contrasenaIngresada.isNotEmpty()) {
 
+                val passHasheadaParaComparar = hashPassword(contrasenaIngresada)
+
                 db.collection("usuarios")
                     .whereEqualTo("correo", correoIngresado)
                     .get()
@@ -47,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
                             val usuarioDoc = documentos.documents[0]
                             val contrasenaBaseDatos = usuarioDoc.getString("contrasena") ?: ""
 
-                            if (contrasenaIngresada == contrasenaBaseDatos) {
+                            if (passHasheadaParaComparar == contrasenaBaseDatos) {
 
                                 val userId = usuarioDoc.id
                                 val nombre = usuarioDoc.getString("nombre") ?: "Usuario"
@@ -55,9 +58,7 @@ class LoginActivity : AppCompatActivity() {
                                 val correo = usuarioDoc.getString("correo") ?: correoIngresado
 
                                 SessionManager.saveSession(this, userId, nombre, correo, rol)
-
                                 Toast.makeText(this, "Bienvenido $nombre", Toast.LENGTH_SHORT).show()
-
                                 navegarAlHome(rol)
 
                             } else {
@@ -74,6 +75,11 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Por favor llena todos los campos", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun hashPassword(password: String): String {
+        val bytes = MessageDigest.getInstance("SHA-256").digest(password.toByteArray())
+        return bytes.joinToString("") { "%02x".format(it) }
     }
 
     private fun navegarAlHome(rol: String) {

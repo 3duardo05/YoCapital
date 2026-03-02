@@ -3950,9 +3950,12 @@ id graph_wrap
 id group_divider
 id grouping
 id groups
+id guideline
 id guideline2
 id guideline3
+id guideline4
 id guideline5
+id guideline7
 id header_title
 id hidden
 id hide_ime_id
@@ -3971,6 +3974,7 @@ id ignore
 id ignoreRequest
 id image
 id imageView
+id imgIconoVenta
 id immediateStop
 id included
 id indeterminate
@@ -4002,6 +4006,8 @@ id legacy
 id light
 id line1
 id line3
+id linea
+id linea1
 id linear
 id linearLayout
 id linearLayout2
@@ -4143,6 +4149,7 @@ id right_icon
 id right_side
 id rounded
 id row_index_key
+id rvVentasRecientes
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -4224,6 +4231,7 @@ id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
 id text
+id text1
 id text2
 id textEnd
 id textInputLayout
@@ -4270,6 +4278,11 @@ id transition_transform
 id triangle
 id tv_comision_estimada
 id tv_total_venta
+id txtCliente
+id txtCliente2
+id txtMesAnio
+id txtMontoComision
+id txtNombreProducto
 id txtSaludo
 id unchecked
 id uniform
@@ -4450,6 +4463,7 @@ layout fragment_perfil_vendedor
 layout fragment_venta_vendedor
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_venta
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -4471,6 +4485,7 @@ layout material_time_input
 layout material_timepicker
 layout material_timepicker_dialog
 layout material_timepicker_textinput_display
+layout mes_separador
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title
@@ -4512,6 +4527,7 @@ layout notification_template_part_time
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout spinner_personalizado
 layout support_simple_spinner_dropdown_item
 menu boton_nav_menu
 mipmap ic_launcher

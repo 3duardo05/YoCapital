@@ -9,12 +9,10 @@ import com.example.yocapital.R
 
 class PerfilVendedorFragment : Fragment() {
 
-    // Esta función es la única importante: es la que dibuja la pantalla
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Aquí le dice: "Infla (dibuja) el diseño de fragment_home_vendedor"
         return inflater.inflate(R.layout.fragment_perfil_vendedor, container, false)
     }
 }

@@ -18,10 +18,10 @@
     <string name="titulo1_onboarding">BIENVENIDO A \n YOCAPITAL</string>
     <string name="titulo_login">Bienvenido</string>
     <string name="vendedor_home_comisiones">Tus Comisiones (Este Mes)</string>
-    <string name="vendedor_home_comisiones_valor">$7,783.00</string>
+    <string name="vendedor_home_comisiones_valor">$0.00</string>
     <string name="vendedor_home_nombre">Hola, Juan Perez</string>
     <string name="vendedor_home_ventas_totales">Ventas\nTotales</string>
-    <string name="vendedor_home_ventas_totales_valor">$20,000.40</string>
+    <string name="vendedor_home_ventas_totales_valor">$0.00</string>
     <string name="vendedor_venta_venta">Agregar Venta</string>
     <style name="Base.Theme.YoCapital" parent="Theme.Material3.DayNight.NoActionBar">
         
@@ -38,5 +38,18 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">20dp</item>
     </style>
-    <style name="Theme.YoCapital" parent="Base.Theme.YoCapital"/>
+    <style name="Theme.YoCapital" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:textColorHint">#888</item>
+        <item name="colorOnSurface">#888</item>
+
+        <item name="colorControlActivated">#00D09E</item>
+
+        <item name="colorPrimary">#00D09E</item>
+        <item name="colorSurfaceVariant">#222</item>
+        <item name="android:navigationBarColor">#222</item>
+
+        <item name="colorSecondaryContainer">#e4a</item>
+        <item name="colorOnSecondaryContainer">#ddd</item>
+        <item name="colorOnSurfaceVariant">#000</item>
+    </style>
 </resources>
