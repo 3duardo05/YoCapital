@@ -18,6 +18,7 @@ drawable on_boarding_celular
 drawable on_boarding_monedas
 drawable user_icon_24
 id bottomNav
+id bottom_navigation
 id btnAnadirCliente
 id btnCambiarPassword
 id btnCerrarSesion
@@ -26,10 +27,13 @@ id btnRegistrarse
 id btnSiguiente_a_fragmento2
 id btnSiguiente_a_sigActividad
 id btn_AnadirVenta
+id btn_GuardarProducto
+id btn_GuardarVendedor
 id btn_IniciarSesion
 id btn_guardar_cliente
 id circulo1
 id circulo2
+id contenedor_fragmentos
 id fragmentContainer
 id frameLayout
 id guideline
@@ -49,13 +53,19 @@ id input_contrasena
 id input_correo
 id input_correo_cliente
 id input_correo_registro
+id input_correo_vendedor
 id input_fecha_venta
 id input_negocio
 id input_nombre
 id input_nombre_cliente
+id input_nombre_producto
+id input_nombre_vendedor
 id input_pass_registro
+id input_precio_producto
+id input_stock_producto
 id input_telefono
 id input_telefono_cliente
+id input_telefono_vendedor
 id linea
 id linea1
 id linearLayout
@@ -64,6 +74,9 @@ id main
 id menu_agregar
 id menu_inicio
 id menu_perfil
+id nav_equipo
+id nav_inicio
+id nav_productos
 id rvVentasRecientes
 id spinner_cliente
 id spinner_producto
@@ -92,6 +105,8 @@ id txtRolVendedor
 id txtSaludo
 id txtTelefonoVendedor
 id txtTituloPerfil
+id txtTituloProducto
+id txtTituloVendedor
 id txtTotalComisionesHistorico
 id txtTotalVentasHistorico
 id txtVentasClienteFrecuente
@@ -104,6 +119,8 @@ layout activity_registro
 layout activity_splash
 layout activity_vendedor
 layout fragment_agregar_cliente
+layout fragment_agregar_producto
+layout fragment_agregar_vendedor
 layout fragment_home_vendedor
 layout fragment_on_boarding1
 layout fragment_on_boarding2
@@ -113,6 +130,7 @@ layout item_venta
 layout mes_separador
 layout spinner_personalizado
 menu boton_nav_menu
+menu menu_gerente
 mipmap ic_launcher
 mipmap ic_launcher_round
 string agregarCliente_titulo

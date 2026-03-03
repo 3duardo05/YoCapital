@@ -3817,6 +3817,7 @@ id bestChoice
 id blocking
 id bottom
 id bottomNav
+id bottom_navigation
 id bounce
 id bounceBoth
 id bounceEnd
@@ -3834,6 +3835,8 @@ id btnRegistrarse
 id btnSiguiente_a_fragmento2
 id btnSiguiente_a_sigActividad
 id btn_AnadirVenta
+id btn_GuardarProducto
+id btn_GuardarVendedor
 id btn_IniciarSesion
 id btn_guardar_cliente
 id buttonPanel
@@ -3865,6 +3868,7 @@ id compress
 id confirm_button
 id constraint
 id container
+id contenedor_fragmentos
 id content
 id contentPanel
 id contiguous
@@ -3989,13 +3993,19 @@ id input_contrasena
 id input_correo
 id input_correo_cliente
 id input_correo_registro
+id input_correo_vendedor
 id input_fecha_venta
 id input_negocio
 id input_nombre
 id input_nombre_cliente
+id input_nombre_producto
+id input_nombre_vendedor
 id input_pass_registro
+id input_precio_producto
+id input_stock_producto
 id input_telefono
 id input_telefono_cliente
+id input_telefono_vendedor
 id invisible
 id inward
 id italic
@@ -4080,6 +4090,9 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id nav_equipo
+id nav_inicio
+id nav_productos
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_content_container
 id navigation_bar_item_icon_container
@@ -4295,6 +4308,8 @@ id txtRolVendedor
 id txtSaludo
 id txtTelefonoVendedor
 id txtTituloPerfil
+id txtTituloProducto
+id txtTituloVendedor
 id txtTotalComisionesHistorico
 id txtTotalVentasHistorico
 id txtVentasClienteFrecuente
@@ -4470,6 +4485,8 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout fragment_agregar_cliente
+layout fragment_agregar_producto
+layout fragment_agregar_vendedor
 layout fragment_home_vendedor
 layout fragment_on_boarding1
 layout fragment_on_boarding2
@@ -4544,6 +4561,7 @@ layout select_dialog_singlechoice_material
 layout spinner_personalizado
 layout support_simple_spinner_dropdown_item
 menu boton_nav_menu
+menu menu_gerente
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
