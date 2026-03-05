@@ -9,6 +9,7 @@ drawable bg_input
 drawable bg_menu_redondo
 drawable bg_menu_redondo_contenido
 drawable bg_redondo
+drawable boton_outline_verde
 drawable contorno_flecha
 drawable flecha_ascendente
 drawable home_icon_24
@@ -22,7 +23,7 @@ id btnAnadirCliente
 id btnCambiarPassword
 id btnCerrarSesion
 id btnIniciarSesion
-id btnRegistrarse
+id btnOmitir
 id btnSiguiente_a_fragmento2
 id btnSiguiente_a_sigActividad
 id btn_AnadirVenta

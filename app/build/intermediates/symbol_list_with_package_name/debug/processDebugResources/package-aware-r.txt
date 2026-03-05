@@ -3571,6 +3571,7 @@ drawable bg_input
 drawable bg_menu_redondo
 drawable bg_menu_redondo_contenido
 drawable bg_redondo
+drawable boton_outline_verde
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -3830,7 +3831,7 @@ id btnAnadirCliente
 id btnCambiarPassword
 id btnCerrarSesion
 id btnIniciarSesion
-id btnRegistrarse
+id btnOmitir
 id btnSiguiente_a_fragmento2
 id btnSiguiente_a_sigActividad
 id btn_AnadirVenta
