@@ -27,19 +27,25 @@ class OnBoarding2Fragment : Fragment() {
 
         val btnSiguiente = view.findViewById<Button>(R.id.btnSiguiente_a_sigActividad)
         val circuloAnterior = view.findViewById<ImageView>(R.id.circulo1)
+        val btnOmitir = view.findViewById<Button>(R.id.btnOmitir)
 
         btnSiguiente.setOnClickListener {
             SessionManager.setOnboardingVisto(requireContext())
-
             val intent = Intent(requireContext(), LoginActivity::class.java)
             startActivity(intent)
-
             requireActivity().finish()
         }
 
         circuloAnterior.setOnClickListener {
             val viewPager = requireActivity().findViewById<ViewPager2>(R.id.viewPager)
             viewPager.currentItem = 0
+        }
+
+        btnOmitir.setOnClickListener {
+            SessionManager.setOnboardingVisto(requireContext())
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
         }
     }
 }

@@ -44,9 +44,9 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Correo"
             android:textColor="#333"
             android:textSize="18sp"
-            android:text="Correo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.12"
             app:layout_constraintStart_toStartOf="parent"
@@ -71,9 +71,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
+            android:text="Contraseña"
             android:textColor="#333"
             android:textSize="18sp"
-            android:text="Contraseña"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.12"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,13 +84,13 @@
             android:layout_width="333dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
-            android:textColor="#333"
-            android:textColorHint="#888"
-            android:backgroundTint="#DFF7E2"
             android:background="@drawable/bg_input"
+            android:backgroundTint="#DFF7E2"
             android:hint="correo@ejemplo.com"
             android:inputType="textEmailAddress"
             android:paddingLeft="15dp"
+            android:textColor="#333"
+            android:textColorHint="#888"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.506"
@@ -118,14 +118,14 @@
                 android:layout_height="40dp"
                 android:background="@drawable/bg_input"
                 android:backgroundTint="#DFF7E2"
-                android:textColor="#333"
-                android:textColorHint="#888"
                 android:hint="● ● ● ● ● ● ● ●"
                 android:inputType="textPassword"
                 android:paddingStart="12dp"
                 android:paddingTop="0dp"
                 android:paddingEnd="50dp"
                 android:paddingBottom="0dp"
+                android:textColor="#333"
+                android:textColorHint="#888"
                 android:textSize="15sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -146,35 +146,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5">
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No tienes una Cuenta?"
-                android:textColor="#093030"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/btnRegistrarse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Registrarse"
-                android:layout_marginLeft="7dp"
-                android:textColor="#3299FF"
-                android:textSize="15sp" />
-
-        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
