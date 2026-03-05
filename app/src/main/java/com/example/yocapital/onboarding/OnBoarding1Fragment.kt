@@ -1,5 +1,6 @@
 package com.example.yocapital.onboarding
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,8 @@ import android.widget.Button
 import android.widget.ImageView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.yocapital.R
+import com.example.yocapital.login.SessionManager
+import com.example.yocapital.login.login.LoginActivity
 
 class OnBoarding1Fragment : Fragment() {
 
@@ -16,7 +19,6 @@ class OnBoarding1Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.fragment_on_boarding1, container, false)
     }
 
@@ -25,6 +27,7 @@ class OnBoarding1Fragment : Fragment() {
 
         val btnSiguiente = view.findViewById<Button>(R.id.btnSiguiente_a_fragmento2)
         val circuloSiguiente = view.findViewById<ImageView>(R.id.circulo2)
+        val btnOmitir = view.findViewById<Button>(R.id.btnOmitir)
 
         btnSiguiente.setOnClickListener {
             val viewPager = requireActivity().findViewById<ViewPager2>(R.id.viewPager)
@@ -34,6 +37,13 @@ class OnBoarding1Fragment : Fragment() {
         circuloSiguiente.setOnClickListener {
             val viewPager = requireActivity().findViewById<ViewPager2>(R.id.viewPager)
             viewPager.currentItem = 1
+        }
+
+        btnOmitir.setOnClickListener {
+            SessionManager.setOnboardingVisto(requireContext())
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
         }
     }
 }

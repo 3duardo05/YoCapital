@@ -24,15 +24,9 @@ class LoginActivity : AppCompatActivity() {
 
         db = Firebase.firestore
 
-        val btnRegistrarse = findViewById<TextView>(R.id.btnRegistrarse)
         val btnIniciarSesion = findViewById<Button>(R.id.btn_IniciarSesion)
         val inputCorreo = findViewById<EditText>(R.id.input_correo)
         val inputContrasena = findViewById<EditText>(R.id.input_contrasena)
-
-        btnRegistrarse.setOnClickListener {
-            val intent = Intent(this, RegistroActivity::class.java)
-            startActivity(intent)
-        }
 
         btnIniciarSesion.setOnClickListener {
             val correoIngresado = inputCorreo.text.toString().trim()
