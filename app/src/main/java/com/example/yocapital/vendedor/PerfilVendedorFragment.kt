@@ -1,5 +1,6 @@
 package com.example.yocapital.vendedor
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -240,15 +241,28 @@ class PerfilVendedorFragment : Fragment() {
 
     private fun cerrarSesion() {
         try {
-            Log.d(TAG, "Cerrando sesión")
-            SessionManager.logout(requireContext())
+            Log.d(TAG, "Mostrando diálogo de confirmación")
 
-            val intent = Intent(requireContext(), LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
-            requireActivity().finish()
+            AlertDialog.Builder(requireContext())
+                .setTitle("Cerrar sesión")
+                .setMessage("¿Estás seguro que deseas salir?")
+                .setPositiveButton("Sí") { _, _ ->
+                    Log.d(TAG, "Usuario confirmó cierre de sesión")
+                    SessionManager.logout(requireContext())
+
+                    val intent = Intent(requireContext(), LoginActivity::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                    requireActivity().finish()
+                }
+                .setNegativeButton("Cancelar") { dialog, _ ->
+                    Log.d(TAG, "Usuario canceló cierre de sesión")
+                    dialog.dismiss()
+                }
+                .show()
+
         } catch (e: Exception) {
-            Log.e(TAG, "Error al cerrar sesión: ${e.message}", e)
+            Log.e(TAG, "Error al mostrar diálogo: ${e.message}", e)
             Toast.makeText(requireContext(), "Error al cerrar sesión", Toast.LENGTH_SHORT).show()
         }
     }

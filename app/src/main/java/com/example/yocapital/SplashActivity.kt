@@ -12,7 +12,7 @@ class SplashActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         val settings = com.google.firebase.firestore.firestoreSettings {
-            isPersistenceEnabled = true // Activa la base de datos local
+            isPersistenceEnabled = true
         }
         FirebaseFirestore.getInstance().firestoreSettings = settings
 

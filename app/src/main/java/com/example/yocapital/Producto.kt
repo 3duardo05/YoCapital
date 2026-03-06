@@ -4,5 +4,6 @@ data class Producto(
     val id: String = "",
     val nombre: String = "",
     val precio: Double = 0.0,
-    val stock: Int = 0
+    val stock: Int = 0,
+    val comision: Double = 0.0
 )

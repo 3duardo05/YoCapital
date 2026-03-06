@@ -28,6 +28,10 @@ class VentaVendedorFragment : Fragment() {
     private val listaNombresProductos = mutableListOf("Selecciona un producto...")
     private val listaPrecios = mutableListOf(0.0)
     private val listaComisiones = mutableListOf(0.0)
+    private val listaStock = mutableListOf(0)
+    private val listaIdsProductos = mutableListOf("")
+
+    private lateinit var btnGuardar: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +42,8 @@ class VentaVendedorFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        btnGuardar = view.findViewById(R.id.btn_AnadirVenta)
 
         configurarCalendario(view)
         configurarNavegacion(view)
@@ -53,10 +59,14 @@ class VentaVendedorFragment : Fragment() {
         listaNombresProductos.clear()
         listaPrecios.clear()
         listaComisiones.clear()
+        listaStock.clear()
+        listaIdsProductos.clear()
 
         listaNombresProductos.add("Selecciona un producto...")
         listaPrecios.add(0.0)
         listaComisiones.add(0.0)
+        listaStock.add(0)
+        listaIdsProductos.add("")
 
         val listaClientes = mutableListOf("Selecciona un cliente...")
 
@@ -86,20 +96,48 @@ class VentaVendedorFragment : Fragment() {
 
         db.collection("productos").get().addOnSuccessListener { documentos ->
             for (documento in documentos) {
-                val nombre = documento.getString("producto")
-                val precio = documento.getDouble("monto_base") ?: 0.0
-                val comision = documento.getDouble("comision") ?: 0.0
+                try {
+                    val id = documento.id
+                    val nombre = documento.getString("nombre") ?: ""
 
-                if (nombre != null) {
-                    listaNombresProductos.add(nombre)
-                    listaPrecios.add(precio)
-                    listaComisiones.add(comision)
+                    val precio = when (val precioRaw = documento.get("precio")) {
+                        is Number -> precioRaw.toDouble()
+                        is String -> precioRaw.toDoubleOrNull() ?: 0.0
+                        else -> 0.0
+                    }
+
+                    val comision = when (val comisionRaw = documento.get("comision")) {
+                        is Number -> comisionRaw.toDouble()
+                        is String -> comisionRaw.toDoubleOrNull() ?: 0.0
+                        else -> 0.0
+                    }
+
+                    val stock = when (val stockRaw = documento.get("stock")) {
+                        is Number -> stockRaw.toInt()
+                        is String -> stockRaw.toIntOrNull() ?: 0
+                        else -> 0
+                    }
+
+                    if (nombre.isNotEmpty()) {
+                        val nombreConStock = when {
+                            stock == 0 -> "$nombre ❌ SIN STOCK"
+                            stock < 5 -> "$nombre ⚠️ Stock: $stock"
+                            else -> "$nombre (Stock: $stock)"
+                        }
+
+                        listaNombresProductos.add(nombreConStock)
+                        listaPrecios.add(precio)
+                        listaComisiones.add(comision)
+                        listaStock.add(stock)
+                        listaIdsProductos.add(id)
+                    }
+                } catch (e: Exception) {
+                    android.util.Log.e("VentaVendedor", "Error al cargar producto: ${e.message}")
                 }
             }
             adapterProductos.notifyDataSetChanged()
         }
     }
-
 
     private fun configurarCalculadoraEnTiempoReal(view: View) {
         val inputCantidad = view.findViewById<EditText>(R.id.input_cantidad)
@@ -113,14 +151,44 @@ class VentaVendedorFragment : Fragment() {
             if (posicionSeleccionada == 0) {
                 tvTotalVenta.text = "Total Venta: \$0.00"
                 tvComisionEstimada.text = "Tu Comisión: \$0.00"
+                tvTotalVenta.setTextColor(0xFF0E3E3E.toInt())
+                tvComisionEstimada.setTextColor(0xFF0E3E3E.toInt())
+                btnGuardar.isEnabled = true
+                btnGuardar.alpha = 1.0f
                 return
             }
 
             val precioDelProducto = listaPrecios[posicionSeleccionada]
             val porcentajeComision = listaComisiones[posicionSeleccionada]
+            val stockDisponible = listaStock[posicionSeleccionada]
 
             val textoCantidad = inputCantidad.text.toString()
             val cantidad = if (textoCantidad.isNotEmpty()) textoCantidad.toInt() else 0
+
+            if (stockDisponible == 0) {
+                tvTotalVenta.text = "❌ PRODUCTO SIN STOCK"
+                tvTotalVenta.setTextColor(0xFFFF0000.toInt())
+                tvComisionEstimada.text = "No disponible para venta"
+                tvComisionEstimada.setTextColor(0xFFFF0000.toInt())
+                btnGuardar.isEnabled = false
+                btnGuardar.alpha = 0.5f
+                return
+            }
+
+            if (cantidad > stockDisponible) {
+                tvTotalVenta.text = "⚠️ Stock insuficiente"
+                tvTotalVenta.setTextColor(0xFFFF0000.toInt())
+                tvComisionEstimada.text = "Disponible: $stockDisponible unidades"
+                tvComisionEstimada.setTextColor(0xFFFF0000.toInt())
+                btnGuardar.isEnabled = false
+                btnGuardar.alpha = 0.5f
+                return
+            }
+
+            tvTotalVenta.setTextColor(0xFF0E3E3E.toInt())
+            tvComisionEstimada.setTextColor(0xFF0E3E3E.toInt())
+            btnGuardar.isEnabled = true
+            btnGuardar.alpha = 1.0f
 
             val totalVenta = precioDelProducto * cantidad
             val gananciaVendedor = totalVenta * (porcentajeComision / 100)
@@ -140,6 +208,18 @@ class VentaVendedorFragment : Fragment() {
         spinnerProducto.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 calcularYMostrar()
+
+                if (position > 0) {
+                    val stockDisponible = listaStock[position]
+                    when {
+                        stockDisponible == 0 -> {
+                            Toast.makeText(requireContext(), "❌ Este producto NO tiene stock disponible", Toast.LENGTH_LONG).show()
+                        }
+                        stockDisponible < 5 -> {
+                            Toast.makeText(requireContext(), "⚠️ Stock bajo: Solo quedan $stockDisponible unidades", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
@@ -186,8 +266,6 @@ class VentaVendedorFragment : Fragment() {
     }
 
     private fun configurarBotonGuardarVenta(view: View) {
-        val btnGuardar = view.findViewById<Button>(R.id.btn_AnadirVenta)
-
         val spinnerCliente = view.findViewById<Spinner>(R.id.spinner_cliente)
         val spinnerProducto = view.findViewById<Spinner>(R.id.spinner_producto)
         val inputCantidad = view.findViewById<EditText>(R.id.input_cantidad)
@@ -203,9 +281,23 @@ class VentaVendedorFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            val clienteElegido = spinnerCliente.selectedItem.toString()
-            val productoElegido = spinnerProducto.selectedItem.toString()
             val cantidad = textoCantidad.toInt()
+            val stockDisponible = listaStock[posicionProducto]
+            val productoId = listaIdsProductos[posicionProducto]
+
+            if (stockDisponible == 0) {
+                Toast.makeText(requireContext(), "❌ Este producto NO tiene stock disponible", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
+            if (cantidad > stockDisponible) {
+                Toast.makeText(requireContext(), "❌ Stock insuficiente. Disponible: $stockDisponible unidades", Toast.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+
+            val clienteElegido = spinnerCliente.selectedItem.toString()
+            val productoElegido = listaNombresProductos[posicionProducto]
+                .replace(Regex(" \\(Stock: \\d+\\)|❌ SIN STOCK|⚠️ Stock: \\d+"), "").trim()
             val fecha = inputFecha.text.toString()
 
             val precio = listaPrecios[posicionProducto]
@@ -227,11 +319,22 @@ class VentaVendedorFragment : Fragment() {
             db.collection("ventas")
                 .add(nuevaVenta)
                 .addOnSuccessListener {
-                    Toast.makeText(requireContext(), "¡Venta registrada exitosamente!", Toast.LENGTH_LONG).show()
+                    val nuevoStock = stockDisponible - cantidad
+                    db.collection("productos")
+                        .document(productoId)
+                        .update("stock", nuevoStock)
+                        .addOnSuccessListener {
+                            Toast.makeText(requireContext(), "¡Venta registrada exitosamente!", Toast.LENGTH_LONG).show()
 
-                    spinnerCliente.setSelection(0)
-                    spinnerProducto.setSelection(0)
-                    inputCantidad.setText("")
+                            spinnerCliente.setSelection(0)
+                            spinnerProducto.setSelection(0)
+                            inputCantidad.setText("1")
+
+                            configurarSpinners(requireView())
+                        }
+                        .addOnFailureListener {
+                            Toast.makeText(requireContext(), "Venta guardada pero error al actualizar stock", Toast.LENGTH_LONG).show()
+                        }
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(requireContext(), "Error al guardar: ${e.message}", Toast.LENGTH_LONG).show()
