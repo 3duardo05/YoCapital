@@ -29,6 +29,7 @@ class GerenteActivity : AppCompatActivity() {
                 fragmentoActual = nuevoFragmento
 
                 when (item.itemId) {
+                    R.id.nav_inicio -> cambiarFragmento(HomeGerenteFragment())
                     R.id.nav_equipo -> cambiarFragmento(VendedoresParentFragment())
                     R.id.nav_productos -> cambiarFragmento(ProductosParentFragment())
                     R.id.nav_perfil -> cambiarFragmento(PerfilGerenteFragment())
@@ -40,9 +41,9 @@ class GerenteActivity : AppCompatActivity() {
         }
 
         if (savedInstanceState == null) {
-            fragmentoActual = "productos"
-            cambiarFragmento(AgregarProductoFragment())
-            bottomNav.selectedItemId = R.id.nav_productos
+            fragmentoActual = "inicio"
+            cambiarFragmento(HomeGerenteFragment())
+            bottomNav.selectedItemId = R.id.nav_inicio
         }
     }
 

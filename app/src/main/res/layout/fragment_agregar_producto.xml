@@ -28,6 +28,8 @@ android:layout_height="match_parent">
             android:layout_height="35dp"
             android:background="@drawable/bg_input"
             android:backgroundTint="#DFF7E2"
+            android:textColor="#333"
+            android:textColorHint="#888"
             android:hint="Ej. Llantas, Seguros, etc."
             android:paddingStart="15dp"
             android:textSize="13sp" />
@@ -48,6 +50,8 @@ android:layout_height="match_parent">
             android:background="@drawable/bg_input"
             android:backgroundTint="#DFF7E2"
             android:hint="$ 0.00"
+            android:textColor="#333"
+            android:textColorHint="#888"
             android:inputType="numberDecimal"
             android:paddingStart="15dp"
             android:textSize="13sp" />
@@ -61,6 +65,7 @@ android:layout_height="match_parent">
             android:textSize="13sp"
             android:textStyle="bold" />
         <Space android:layout_width="match_parent" android:layout_height="2dp" />
+
         <EditText
             android:id="@+id/input_stock_producto"
             android:layout_width="match_parent"
@@ -68,9 +73,12 @@ android:layout_height="match_parent">
             android:background="@drawable/bg_input"
             android:backgroundTint="#DFF7E2"
             android:hint="0"
+            android:textColor="#333"
+            android:textColorHint="#888"
             android:inputType="number"
             android:paddingStart="15dp"
             android:textSize="13sp" />
+
         <Space
             android:layout_width="match_parent"
             android:layout_height="25dp" />
@@ -92,6 +100,8 @@ android:layout_height="match_parent">
             android:background="@drawable/bg_input"
             android:backgroundTint="#DFF7E2"
             android:hint="1%"
+            android:textColor="#333"
+            android:textColorHint="#888"
             android:inputType="numberDecimal"
             android:paddingStart="15dp"
             android:textSize="13sp" />

@@ -147,35 +147,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5">
-
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No tienes una Cuenta?"
-                android:textColor="#093030"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/btnRegistrarse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Registrarse"
-                android:layout_marginLeft="7dp"
-                android:textColor="#3299FF"
-                android:textSize="15sp" />
-
-        </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.Guideline

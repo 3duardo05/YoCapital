@@ -38,6 +38,8 @@ android {
 
 dependencies {
 
+    implementation(libs.itext7.core)
+    implementation(libs.mpandroidchart)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

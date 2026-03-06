@@ -36,6 +36,8 @@
             android:layout_height="35dp"
             android:background="@drawable/bg_input"
             android:backgroundTint="#DFF7E2"
+            android:textColor="#333"
+            android:textColorHint="#888"
             android:hint="Nombre Completo"
             android:paddingStart="15dp"
             android:textSize="13sp" />
@@ -62,6 +64,8 @@
             android:layout_height="35dp"
             android:background="@drawable/bg_input"
             android:backgroundTint="#DFF7E2"
+            android:textColor="#333"
+            android:textColorHint="#888"
             android:hint="correo@ejemplo.com"
             android:inputType="textEmailAddress"
             android:paddingStart="15dp"
@@ -104,6 +108,7 @@
                 android:backgroundTint="#DFF7E2"
                 android:hint="● ● ● ● ● ● ● ●"
                 android:inputType="textPassword"
+
                 android:paddingStart="12dp"
                 android:paddingTop="0dp"
                 android:paddingEnd="50dp"
@@ -137,6 +142,8 @@
             android:background="@drawable/bg_input"
             android:backgroundTint="#DFF7E2"
             android:hint="81 1234 5678"
+            android:textColor="#333"
+            android:textColorHint="#888"
             android:inputType="phone"
             android:paddingStart="15dp"
             android:textSize="13sp" />

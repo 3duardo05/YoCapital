@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="Editar Perfil"
+            android:textColor="#052224"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- Nombre Completo -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre Completo"
+            android:textColor="#0E3E3E"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="4dp" />
+
+        <EditText
+            android:id="@+id/editNombre"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_input"
+            android:backgroundTint="#DFF7E2"
+            android:paddingStart="15dp"
+            android:textColor="#333"
+            android:textColorHint="#888"
+            android:textSize="14sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <!-- Correo Electrónico -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Correo Electrónico"
+            android:textColor="#0E3E3E"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="4dp" />
+
+        <EditText
+            android:id="@+id/editCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_input"
+            android:backgroundTint="#DFF7E2"
+            android:hint="correo@ejemplo.com"
+            android:inputType="textEmailAddress"
+            android:paddingStart="15dp"
+            android:textColor="#333"
+            android:textColorHint="#888"
+            android:textSize="14sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <!-- Teléfono -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Teléfono"
+            android:textColor="#0E3E3E"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="4dp" />
+
+        <EditText
+            android:id="@+id/editTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_input"
+            android:backgroundTint="#DFF7E2"
+            android:hint="81 1234 5678"
+            android:inputType="phone"
+            android:paddingStart="15dp"
+            android:textColor="#333"
+            android:textColorHint="#888"
+            android:textSize="14sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <!-- Contraseña (opcional) -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nueva Contraseña (opcional)"
+            android:textColor="#0E3E3E"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="4dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:endIconMode="password_toggle"
+            app:endIconTint="#00D09E"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editContrasena"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_input"
+                android:backgroundTint="#DFF7E2"
+                android:gravity="center_vertical"
+                android:hint="Dejar vacío para mantener la actual"
+                android:inputType="textPassword"
+                android:paddingStart="15dp"
+                android:paddingTop="0dp"
+                android:paddingEnd="50dp"
+                android:paddingBottom="0dp"
+                android:textColor="#333"
+                android:textColorHint="#888"
+                android:textSize="14sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="24dp" />
+
+        <!-- Botones -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCancelar"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#999999"
+                android:text="Cancelar"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/btnGuardar"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:backgroundTint="#00D09E"
+                android:text="Guardar Cambios"
+                android:textColor="#052224" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

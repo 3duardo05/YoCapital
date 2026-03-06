@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content"
     android:fillViewport="true">
 
@@ -37,6 +38,8 @@
             android:layout_height="40dp"
             android:background="@drawable/bg_input"
             android:backgroundTint="#DFF7E2"
+            android:textColor="#333"
+            android:textColorHint="#888"
             android:paddingStart="15dp"
             android:textSize="14sp" />
         <Space
@@ -61,6 +64,8 @@
             android:background="@drawable/bg_input"
             android:backgroundTint="#DFF7E2"
             android:hint="correo@ejemplo.com"
+            android:textColor="#333"
+            android:textColorHint="#888"
             android:inputType="textEmailAddress"
             android:paddingStart="15dp"
             android:textSize="14sp" />
@@ -87,6 +92,8 @@
             android:backgroundTint="#DFF7E2"
             android:hint="81 1234 5678"
             android:inputType="phone"
+            android:textColor="#333"
+            android:textColorHint="#888"
             android:paddingStart="15dp"
             android:textSize="14sp" />
         <Space
@@ -108,9 +115,12 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:paddingStart="0dp"
-            android:paddingEnd="0dp">
+            app:boxBackgroundColor="@android:color/transparent"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:hintEnabled="false"
+            app:endIconMode="password_toggle"
+            app:endIconTint="#00D09E">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editContrasena"
@@ -121,8 +131,13 @@
                 android:hint="Dejar vacío para mantener la actual"
                 android:inputType="textPassword"
                 android:paddingStart="15dp"
-                android:paddingEnd="15dp"
-                android:textSize="14sp" />
+                android:paddingEnd="50dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:textColor="#333"
+                android:textColorHint="#888"
+                android:textSize="14sp"
+                android:gravity="center_vertical" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Space
