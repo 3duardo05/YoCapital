@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editar Producto"
+        android:textColor="#052224"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Nombre del Producto -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nombre del Producto"
+        android:textColor="#0E3E3E"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="4dp" />
+    <EditText
+        android:id="@+id/editarNombre"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_input"
+        android:backgroundTint="#DFF7E2"
+        android:paddingStart="15dp"
+        android:textSize="14sp" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp" />
+
+    <!-- Precio -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Precio Unitario"
+        android:textColor="#0E3E3E"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="4dp" />
+    <EditText
+        android:id="@+id/editarPrecio"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_input"
+        android:backgroundTint="#DFF7E2"
+        android:hint="$ 0.00"
+        android:inputType="numberDecimal"
+        android:paddingStart="15dp"
+        android:textSize="14sp" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp" />
+
+    <!-- Stock -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stock Disponible"
+        android:textColor="#0E3E3E"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="4dp" />
+    <EditText
+        android:id="@+id/editarStock"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_input"
+        android:backgroundTint="#DFF7E2"
+        android:hint="0"
+        android:inputType="number"
+        android:paddingStart="15dp"
+        android:textSize="14sp" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="16dp" />
+
+    <!-- Comisión -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Comisión del Vendedor (%)"
+        android:textColor="#0E3E3E"
+        android:textSize="13sp"
+        android:textStyle="bold" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="4dp" />
+    <EditText
+        android:id="@+id/editarComision"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_input"
+        android:backgroundTint="#DFF7E2"
+        android:hint="Ej. 5 (para 5%)"
+        android:inputType="numberDecimal"
+        android:paddingStart="15dp"
+        android:textSize="14sp" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="24dp" />
+
+    <!-- Botones -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/boton_Cancelar"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:backgroundTint="#999999"
+            android:text="Cancelar"
+            android:textColor="#FFFFFF"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/boton_Guardar"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:backgroundTint="#00D09E"
+            android:text="Guardar Cambios"
+            android:textColor="#052224" />
+    </LinearLayout>
+
+</LinearLayout>
