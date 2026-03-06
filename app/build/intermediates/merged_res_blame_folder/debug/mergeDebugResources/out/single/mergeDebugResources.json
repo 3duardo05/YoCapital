@@ -44,12 +44,12 @@
         "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\layout\\item_venta.xml"
     },
     {
-        "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\layout_fragment_agregar_vendedor.xml.flat",
-        "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\layout\\fragment_agregar_vendedor.xml"
-    },
-    {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\layout_fragment_perfil_gerente.xml.flat",
         "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\layout\\fragment_perfil_gerente.xml"
+    },
+    {
+        "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\layout_fragment_agregar_vendedor.xml.flat",
+        "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\layout\\fragment_agregar_vendedor.xml"
     },
     {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
@@ -70,6 +70,10 @@
     {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\drawable_flecha_ascendente.xml.flat",
         "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\drawable\\flecha_ascendente.xml"
+    },
+    {
+        "merged": "com.example.yocapital.app-debug-49:/drawable_boton_outline_verde.xml.flat",
+        "source": "com.example.yocapital.app-main-51:/drawable/boton_outline_verde.xml"
     },
     {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\layout_fragment_on_boarding2.xml.flat",
@@ -96,12 +100,20 @@
         "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\layout\\fragment_agregar_producto.xml"
     },
     {
+        "merged": "com.example.yocapital.app-debug-49:/color_selector_bottom_nav.xml.flat",
+        "source": "com.example.yocapital.app-main-51:/color/selector_bottom_nav.xml"
+    },
+    {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\mipmap-hdpi_ic_launcher.webp.flat",
         "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\layout_fragment_gestionar_vendedores.xml.flat",
         "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\layout\\fragment_gestionar_vendedores.xml"
+    },
+    {
+        "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\layout_dialogo_editar_vendedor.xml.flat",
+        "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\layout\\dialogo_editar_vendedor.xml"
     },
     {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\layout_fragment_vendedor_parent.xml.flat",
@@ -154,10 +166,6 @@
     {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\drawable_bg_menu_redondo.xml.flat",
         "source": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-main-51:\\drawable\\bg_menu_redondo.xml"
-    },
-    {
-        "merged": "com.example.yocapital.app-debug-49:/layout_dialogo_editar_vendedor.xml.flat",
-        "source": "com.example.yocapital.app-main-51:/layout/dialogo_editar_vendedor.xml"
     },
     {
         "merged": "C:\\Users\\100163165\\.gradle\\daemon\\8.11.1\\com.example.yocapital.app-debug-49:\\drawable_ic_launcher_foreground.xml.flat",

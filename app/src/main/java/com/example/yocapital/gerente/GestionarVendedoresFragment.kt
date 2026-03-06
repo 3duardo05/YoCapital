@@ -1,5 +1,6 @@
 package com.example.yocapital.gerente
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -52,6 +53,7 @@ class GestionarVendedoresFragment : Fragment() {
         cargarVendedores()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun cargarVendedores() {
         db.collection("usuarios")
             .whereEqualTo("rol", "vendedor")
@@ -143,7 +145,7 @@ class GestionarVendedoresFragment : Fragment() {
                 .addOnSuccessListener {
                     Toast.makeText(requireContext(), "Vendedor actualizado", Toast.LENGTH_SHORT).show()
                     dialog.dismiss()
-                    cargarVendedores()
+                    cargarVendedores() // Recargar la lista
                 }
                 .addOnFailureListener {
                     Toast.makeText(requireContext(), "Error al actualizar", Toast.LENGTH_SHORT).show()
