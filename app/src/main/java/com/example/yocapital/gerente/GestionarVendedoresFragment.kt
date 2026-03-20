@@ -145,7 +145,7 @@ class GestionarVendedoresFragment : Fragment() {
                 .addOnSuccessListener {
                     Toast.makeText(requireContext(), "Vendedor actualizado", Toast.LENGTH_SHORT).show()
                     dialog.dismiss()
-                    cargarVendedores() // Recargar la lista
+                    cargarVendedores()
                 }
                 .addOnFailureListener {
                     Toast.makeText(requireContext(), "Error al actualizar", Toast.LENGTH_SHORT).show()

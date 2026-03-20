@@ -38,18 +38,14 @@ class PerfilGerenteFragment : Fragment() {
         val btnVistaPrevia = view.findViewById<Button>(R.id.btn_vista_previa_reporte)
         val btnDescargarPdf = view.findViewById<Button>(R.id.btn_descargar_pdf)
 
-        // ✅ Cargar datos del gerente
         cargarDatosGerente(txtNombre, txtCorreo, txtTelefono)
 
-        // ✅ Cargar estadísticas
         cargarEstadisticas(view)
 
-        // ✅ Botón Editar Perfil
         btnEditarPerfil.setOnClickListener {
             mostrarDialogoEditarPerfil()
         }
 
-        // ✅ Botón Vista Previa
         btnVistaPrevia.setOnClickListener {
             val fragment = VistaReporteFragment()
             parentFragmentManager.beginTransaction()
@@ -58,9 +54,7 @@ class PerfilGerenteFragment : Fragment() {
                 .commit()
         }
 
-        // ✅ Botón Descargar PDF directo
         btnDescargarPdf.setOnClickListener {
-            // Abrir vista previa y generar PDF automáticamente
             val fragment = VistaReporteFragment()
             val bundle = Bundle()
             bundle.putBoolean("descargar_automatico", true)
@@ -71,11 +65,9 @@ class PerfilGerenteFragment : Fragment() {
                 .addToBackStack(null)
                 .commit()
 
-            // Mostrar mensaje
             Toast.makeText(requireContext(), "Generando PDF...", Toast.LENGTH_SHORT).show()
         }
 
-        // ✅ Botón Cerrar Sesión
         btnCerrarSesion.setOnClickListener {
             AlertDialog.Builder(requireContext())
                 .setTitle("Cerrar sesión")
@@ -92,7 +84,6 @@ class PerfilGerenteFragment : Fragment() {
         }
     }
 
-    // ✅ Cargar datos del gerente desde Firebase (corrige SessionManager automáticamente)
     private fun cargarDatosGerente(txtNombre: TextView, txtCorreo: TextView, txtTelefono: TextView) {
         val userId = SessionManager.getUserId(requireContext())
 
@@ -104,12 +95,10 @@ class PerfilGerenteFragment : Fragment() {
                 val correo = documento.getString("correo") ?: "Sin correo"
                 val telefono = documento.getString("telefono") ?: "Sin teléfono"
 
-                // Mostrar en la UI
                 txtNombre.text = nombre
                 txtCorreo.text = correo
                 txtTelefono.text = telefono
 
-                // ✅ Actualizar SessionManager con datos correctos de Firebase
                 SessionManager.saveSession(
                     context = requireContext(),
                     id = userId,
@@ -120,7 +109,6 @@ class PerfilGerenteFragment : Fragment() {
                 )
             }
             .addOnFailureListener {
-                // Fallback: usar SessionManager si Firebase falla
                 txtNombre.text = SessionManager.getNombre(requireContext())
                 txtCorreo.text = SessionManager.getCorreo(requireContext())
                 txtTelefono.text = SessionManager.getTelefono(requireContext())
@@ -129,13 +117,11 @@ class PerfilGerenteFragment : Fragment() {
             }
     }
 
-    // ✅ Cargar estadísticas desde Firebase
     private fun cargarEstadisticas(view: View) {
         val txtTotalVendedores = view.findViewById<TextView>(R.id.txt_total_vendedores)
         val txtTotalProductos = view.findViewById<TextView>(R.id.txt_total_productos)
         val txtVentasAnio = view.findViewById<TextView>(R.id.txt_ventas_anio)
 
-        // Contar vendedores
         db.collection("usuarios")
             .whereEqualTo("rol", "vendedor")
             .get()
@@ -143,14 +129,12 @@ class PerfilGerenteFragment : Fragment() {
                 txtTotalVendedores.text = documentos.size().toString()
             }
 
-        // Contar productos
         db.collection("productos")
             .get()
             .addOnSuccessListener { documentos ->
                 txtTotalProductos.text = documentos.size().toString()
             }
 
-        // Calcular ventas del año
         val anioActual = java.util.Calendar.getInstance().get(java.util.Calendar.YEAR)
         db.collection("ventas")
             .get()
@@ -171,7 +155,6 @@ class PerfilGerenteFragment : Fragment() {
                             }
                         }
                     } catch (e: Exception) {
-                        // Ignorar
                     }
                 }
 
@@ -179,7 +162,6 @@ class PerfilGerenteFragment : Fragment() {
             }
     }
 
-    // ✅ Mostrar diálogo para editar perfil
     private fun mostrarDialogoEditarPerfil() {
         val dialogView = LayoutInflater.from(requireContext())
             .inflate(R.layout.dialogo_editar_perfil_gerente, null)
@@ -191,7 +173,6 @@ class PerfilGerenteFragment : Fragment() {
         val btnGuardar = dialogView.findViewById<Button>(R.id.btnGuardar)
         val btnCancelar = dialogView.findViewById<Button>(R.id.btnCancelar)
 
-        // ✅ Prellenar campos con datos actuales
         editNombre.setText(SessionManager.getNombre(requireContext()))
         editCorreo.setText(SessionManager.getCorreo(requireContext()))
         editTelefono.setText(SessionManager.getTelefono(requireContext()))
@@ -210,20 +191,17 @@ class PerfilGerenteFragment : Fragment() {
             val telefono = editTelefono.text.toString().trim()
             val nuevaContrasena = editContrasena.text.toString().trim()
 
-            // Validaciones
             if (nombre.isEmpty() || correo.isEmpty() || telefono.isEmpty()) {
                 Toast.makeText(requireContext(), "Llena todos los campos obligatorios", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // Preparar datos a actualizar
             val datosActualizados = hashMapOf<String, Any>(
                 "nombre" to nombre,
                 "correo" to correo,
                 "telefono" to telefono
             )
 
-            // Si hay nueva contraseña, hashearla y agregarla
             if (nuevaContrasena.isNotEmpty()) {
                 if (nuevaContrasena.length < 6) {
                     Toast.makeText(requireContext(), "La contraseña debe tener al menos 6 caracteres", Toast.LENGTH_SHORT).show()
@@ -233,13 +211,11 @@ class PerfilGerenteFragment : Fragment() {
                 datosActualizados["contrasena"] = passHasheada
             }
 
-            // Actualizar en Firebase
             val userId = SessionManager.getUserId(requireContext())
             db.collection("usuarios")
                 .document(userId)
                 .update(datosActualizados)
                 .addOnSuccessListener {
-                    // ✅ Actualizar SessionManager CON PARÁMETROS NOMBRADOS
                     SessionManager.saveSession(
                         context = requireContext(),
                         id = userId,
@@ -252,7 +228,6 @@ class PerfilGerenteFragment : Fragment() {
                     Toast.makeText(requireContext(), "Perfil actualizado exitosamente", Toast.LENGTH_SHORT).show()
                     dialog.dismiss()
 
-                    // ✅ Recargar datos en la UI
                     view?.let { v ->
                         v.findViewById<TextView>(R.id.txt_nombre_usuario).text = nombre
                         v.findViewById<TextView>(R.id.txt_correo_usuario).text = correo
@@ -267,7 +242,6 @@ class PerfilGerenteFragment : Fragment() {
         dialog.show()
     }
 
-    // ✅ Hashear contraseña con SHA-256
     private fun hashPassword(password: String): String {
         val bytes = java.security.MessageDigest.getInstance("SHA-256").digest(password.toByteArray())
         return bytes.joinToString("") { "%02x".format(it) }

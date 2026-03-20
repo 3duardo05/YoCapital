@@ -30,12 +30,11 @@ class RankingReporteAdapter(
         holder.txtNombre.text = item.nombre
         holder.txtVentas.text = String.format("$%,.2f", item.ventas)
 
-        // Color de medalla para top 3
         val color = when (item.posicion) {
-            1 -> 0xFFFFD700.toInt() // Oro
-            2 -> 0xFFC0C0C0.toInt() // Plata
-            3 -> 0xFFCD7F32.toInt() // Bronce
-            else -> 0xFF666666.toInt() // Gris
+            1 -> 0xFFFFD700.toInt()
+            2 -> 0xFFC0C0C0.toInt()
+            3 -> 0xFFCD7F32.toInt()
+            else -> 0xFF666666.toInt()
         }
         holder.txtPosicion.setTextColor(color)
     }

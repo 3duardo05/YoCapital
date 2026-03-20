@@ -24,7 +24,6 @@ import java.util.*
 
 object GeneradorPDF {
 
-    // Color verde YoCapital
     private val COLOR_VERDE = DeviceRgb(0, 208, 158)
     private val COLOR_GRIS = DeviceRgb(102, 102, 102)
     private val COLOR_NEGRO = DeviceRgb(5, 34, 36)
@@ -47,10 +46,8 @@ object GeneradorPDF {
 
     fun generarReporteMensual(context: Context, datos: DatosReporte): Boolean {
         return try {
-            // Crear nombre del archivo
             val nombreArchivo = "Reporte_${datos.mes}_${datos.anio}.pdf"
 
-            // Crear archivo según versión de Android
             val file = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 crearArchivoMediaStore(context, nombreArchivo)
             } else {
@@ -62,27 +59,20 @@ object GeneradorPDF {
                 return false
             }
 
-            // Generar PDF
             val writer = PdfWriter(file)
             val pdfDoc = PdfDocument(writer)
             val document = Document(pdfDoc)
 
-            // === PORTADA ===
             agregarPortada(document, datos)
 
-            // === RESUMEN EJECUTIVO ===
             agregarResumenEjecutivo(document, datos)
 
-            // === COMPARATIVA ===
             agregarComparativa(document, datos)
 
-            // === RANKING ===
             agregarRanking(document, datos)
 
-            // === PRODUCTOS ===
             agregarProductos(document, datos)
 
-            // === PIE DE PÁGINA ===
             agregarPiePagina(document)
 
             document.close()
@@ -118,7 +108,6 @@ object GeneradorPDF {
     }
 
     private fun agregarPortada(document: Document, datos: DatosReporte) {
-        // Título principal
         val titulo = Paragraph("YoCapital")
             .setFontSize(32f)
             .setBold()
@@ -162,12 +151,10 @@ object GeneradorPDF {
 
         document.add(titulo)
 
-        // Tabla de resumen
         val tabla = Table(UnitValue.createPercentArray(floatArrayOf(3f, 2f)))
             .useAllAvailableWidth()
             .setMarginTop(10f)
 
-        // Datos del resumen
         agregarFilaTabla(tabla, "Total Ventas", String.format("$%,.2f", datos.totalVentas))
         agregarFilaTabla(tabla, "Transacciones", datos.transacciones.toString())
         agregarFilaTabla(tabla, "Promedio por venta", String.format("$%,.2f", datos.promedioVenta))
@@ -218,12 +205,10 @@ object GeneradorPDF {
             .useAllAvailableWidth()
             .setMarginTop(10f)
 
-        // Header
         tabla.addHeaderCell(crearCeldaHeader("#"))
         tabla.addHeaderCell(crearCeldaHeader("Vendedor"))
         tabla.addHeaderCell(crearCeldaHeader("Ventas"))
 
-        // Datos
         for (vendedor in datos.ranking) {
             tabla.addCell(crearCelda("${vendedor.posicion}"))
             tabla.addCell(crearCelda(vendedor.nombre))
@@ -248,12 +233,10 @@ object GeneradorPDF {
             .useAllAvailableWidth()
             .setMarginTop(10f)
 
-        // Header
         tabla.addHeaderCell(crearCeldaHeader("#"))
         tabla.addHeaderCell(crearCeldaHeader("Producto"))
         tabla.addHeaderCell(crearCeldaHeader("Unidades"))
 
-        // Datos
         for (producto in datos.productos) {
             tabla.addCell(crearCelda("${producto.posicion}"))
             tabla.addCell(crearCelda(producto.nombre))

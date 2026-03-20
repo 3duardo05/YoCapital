@@ -34,7 +34,6 @@ class VistaReporteFragment : Fragment() {
         val btnDescargar = view.findViewById<ImageButton>(R.id.btn_descargar_desde_vista)
         val txtTitulo = view.findViewById<TextView>(R.id.txt_titulo_reporte)
 
-        // Configurar título con mes y año actual
         val calendario = Calendar.getInstance()
         val nombresMeses = listOf("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
             "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
@@ -46,17 +45,14 @@ class VistaReporteFragment : Fragment() {
             generarPDF()
         }
 
-        // Botón cerrar
         btnCerrar.setOnClickListener {
             parentFragmentManager.popBackStack()
         }
 
-        // Botón descargar desde vista previa
         btnDescargar.setOnClickListener {
             generarPDF()
         }
 
-        // Cargar datos del reporte
         cargarDatosReporte(view)
     }
 
@@ -66,7 +62,6 @@ class VistaReporteFragment : Fragment() {
         val mesActual = calendario.get(Calendar.MONTH)
         val anioActual = calendario.get(Calendar.YEAR)
 
-        // Referencias a los TextViews
         val txtTotalVentas = view.findViewById<TextView>(R.id.txt_total_ventas)
         val txtTotalTransacciones = view.findViewById<TextView>(R.id.txt_total_transacciones)
         val txtPromedioVenta = view.findViewById<TextView>(R.id.txt_promedio_venta)
@@ -79,7 +74,6 @@ class VistaReporteFragment : Fragment() {
         rvRanking.layoutManager = LinearLayoutManager(requireContext())
         rvProductos.layoutManager = LinearLayoutManager(requireContext())
 
-        // Obtener ventas del mes actual
         db.collection("ventas")
             .get()
             .addOnSuccessListener { documentos ->
@@ -99,7 +93,6 @@ class VistaReporteFragment : Fragment() {
                             val mes = cal.get(Calendar.MONTH)
                             val anio = cal.get(Calendar.YEAR)
 
-                            // Ventas del mes actual
                             if (mes == mesActual && anio == anioActual) {
                                 val total = documento.getDouble("total_venta") ?: 0.0
                                 val comision = when (val c = documento.get("comision_vendedor")) {
@@ -122,7 +115,6 @@ class VistaReporteFragment : Fragment() {
                                     productosMasVendidos.getOrDefault(producto, 0) + cantidad
                             }
 
-                            // Ventas del mes anterior
                             val mesAnterior = if (mesActual == 0) 11 else mesActual - 1
                             val anioMesAnterior = if (mesActual == 0) anioActual - 1 else anioActual
                             if (mes == mesAnterior && anio == anioMesAnterior) {
@@ -130,18 +122,15 @@ class VistaReporteFragment : Fragment() {
                             }
                         }
                     } catch (e: Exception) {
-                        // Ignorar
                     }
                 }
 
-                // Actualizar resumen ejecutivo
                 txtTotalVentas.text = String.format("$%,.2f", totalVentas)
                 txtTotalTransacciones.text = cantidadTransacciones.toString()
                 val promedio = if (cantidadTransacciones > 0) totalVentas / cantidadTransacciones else 0.0
                 txtPromedioVenta.text = String.format("$%,.2f", promedio)
                 txtTotalComisiones.text = String.format("$%,.2f", totalComisiones)
 
-                // Actualizar comparativa
                 txtMesAnterior.text = String.format("$%,.2f", ventasMesAnterior)
                 val crecimiento = if (ventasMesAnterior > 0) {
                     ((totalVentas - ventasMesAnterior) / ventasMesAnterior) * 100
@@ -164,10 +153,8 @@ class VistaReporteFragment : Fragment() {
                 txtCrecimiento.text = String.format("$simbolo %+.1f%%", crecimiento)
                 txtCrecimiento.setTextColor(color)
 
-                // Cargar ranking de vendedores
                 cargarRanking(rvRanking, ventasPorVendedor)
 
-                // Cargar productos más vendidos
                 cargarProductos(rvProductos, productosMasVendidos)
             }
     }
@@ -180,7 +167,6 @@ class VistaReporteFragment : Fragment() {
         val listaRanking = mutableListOf<VendedorRankingReporte>()
 
         if (ranking.isEmpty()) {
-            // Mostrar mensaje de "sin datos"
             return
         }
 
@@ -220,7 +206,6 @@ class VistaReporteFragment : Fragment() {
         recyclerView.adapter = ProductosReporteAdapter(listaProductos)
     }
 
-    // ✅ NUEVO: Generar y descargar PDF
     private fun generarPDF() {
         val formatoFecha = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         val calendario = Calendar.getInstance()
@@ -231,7 +216,6 @@ class VistaReporteFragment : Fragment() {
             "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre")
         val nombreMes = nombresMeses[mesActual]
 
-        // Obtener ventas del mes actual
         db.collection("ventas")
             .get()
             .addOnSuccessListener { documentos ->
@@ -251,7 +235,6 @@ class VistaReporteFragment : Fragment() {
                             val mes = cal.get(Calendar.MONTH)
                             val anio = cal.get(Calendar.YEAR)
 
-                            // Ventas del mes actual
                             if (mes == mesActual && anio == anioActual) {
                                 val total = documento.getDouble("total_venta") ?: 0.0
                                 val comision = when (val c = documento.get("comision_vendedor")) {
@@ -274,7 +257,6 @@ class VistaReporteFragment : Fragment() {
                                     productosMasVendidos.getOrDefault(producto, 0) + cantidad
                             }
 
-                            // Ventas del mes anterior
                             val mesAnterior = if (mesActual == 0) 11 else mesActual - 1
                             val anioMesAnterior = if (mesActual == 0) anioActual - 1 else anioActual
                             if (mes == mesAnterior && anio == anioMesAnterior) {
@@ -282,11 +264,9 @@ class VistaReporteFragment : Fragment() {
                             }
                         }
                     } catch (e: Exception) {
-                        // Ignorar
                     }
                 }
 
-                // Calcular crecimiento
                 val crecimiento = if (ventasMesAnterior > 0) {
                     ((totalVentas - ventasMesAnterior) / ventasMesAnterior) * 100
                 } else if (totalVentas > 0) {
@@ -295,14 +275,12 @@ class VistaReporteFragment : Fragment() {
                     0.0
                 }
 
-                // Calcular promedio
                 val promedioVenta = if (cantidadTransacciones > 0) {
                     totalVentas / cantidadTransacciones
                 } else {
                     0.0
                 }
 
-                // Preparar ranking
                 val ranking = ventasPorVendedor.entries
                     .sortedByDescending { it.value }
                     .take(5)
@@ -310,7 +288,6 @@ class VistaReporteFragment : Fragment() {
                 val listaRankingPDF = mutableListOf<GeneradorPDF.VendedorRanking>()
 
                 if (ranking.isEmpty()) {
-                    // Sin datos, generar PDF vacío
                     generarPDFConDatos(
                         nombreMes, anioActual, totalVentas, cantidadTransacciones,
                         promedioVenta, totalComisiones, ventasMesAnterior, crecimiento,
@@ -319,7 +296,6 @@ class VistaReporteFragment : Fragment() {
                     return@addOnSuccessListener
                 }
 
-                // Obtener nombres de vendedores
                 var vendedoresObtenidos = 0
                 for ((index, entrada) in ranking.withIndex()) {
                     db.collection("usuarios")
@@ -337,7 +313,6 @@ class VistaReporteFragment : Fragment() {
 
                             vendedoresObtenidos++
                             if (vendedoresObtenidos == ranking.size) {
-                                // Ya tenemos todos los vendedores, preparar productos
                                 val listaProductosPDF = productosMasVendidos.entries
                                     .sortedByDescending { it.value }
                                     .take(5)
@@ -349,7 +324,6 @@ class VistaReporteFragment : Fragment() {
                                         )
                                     }
 
-                                // Generar PDF
                                 generarPDFConDatos(
                                     nombreMes, anioActual, totalVentas, cantidadTransacciones,
                                     promedioVenta, totalComisiones, ventasMesAnterior, crecimiento,
@@ -393,7 +367,6 @@ class VistaReporteFragment : Fragment() {
         GeneradorPDF.generarReporteMensual(requireContext(), datos)
     }
 
-    // Data classes
     data class VendedorRankingReporte(val posicion: Int, val nombre: String, val ventas: Double)
     data class ProductoReporte(val posicion: Int, val nombre: String, val cantidad: Int)
 }

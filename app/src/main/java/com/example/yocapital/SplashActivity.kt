@@ -20,20 +20,16 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // ✅ Configurar Firebase
         val settings = com.google.firebase.firestore.firestoreSettings {
             isPersistenceEnabled = true
         }
         FirebaseFirestore.getInstance().firestoreSettings = settings
 
-        // ✅ Mostrar el diseño del splash
         setContentView(R.layout.activity_splash)
 
-        // ✅ Obtener vistas
         val logo = findViewById<ImageView>(R.id.logo)
         val nombre = findViewById<TextView>(R.id.txtNombre)
 
-        // ✅ Animación de entrada
         logo.alpha = 0f
         logo.scaleX = 0.5f
         logo.scaleY = 0.5f
@@ -52,7 +48,6 @@ class SplashActivity : AppCompatActivity() {
             .setDuration(1000)
             .start()
 
-        // ✅ Esperar 2.5 segundos y navegar
         Handler(Looper.getMainLooper()).postDelayed({
             navegarSiguientePantalla()
         }, 2500)
